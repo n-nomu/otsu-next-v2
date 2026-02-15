@@ -5,19 +5,16 @@ import Link from 'next/link';
 import { ShoppingBag, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { getCartCount } from '@/lib/cart';
+import { usePathname } from 'next/navigation';
 
-interface HeaderProps {
-  currentSection?: string;
-  onNavigate?: (section: string) => void;
-}
-
-export function Header({ currentSection = 'home', onNavigate }: HeaderProps) {
+export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const pathname = usePathname();
 
-  // Check if we're on the homepage (no hash or #home)
-  const isHomePage = currentSection === 'home' || currentSection === '';
+  // トップページかどうかを判定
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,40 +44,36 @@ export function Header({ currentSection = 'home', onNavigate }: HeaderProps) {
   const getHeaderStyle = () => {
     if (isHomePage) {
       return isScrolled
-        ? 'bg-white/95 backdrop-blur-md shadow-sm'
+        ? 'bg-[#F5F3EF]/95 backdrop-blur-md shadow-sm'
         : 'bg-transparent';
     }
-    return 'bg-white/95 backdrop-blur-md shadow-sm';
+    return 'bg-[#F5F3EF]/95 backdrop-blur-md shadow-sm';
   };
 
   const getTextColor = () => {
     if (isHomePage) {
-      return isScrolled ? 'text-charcoal' : 'text-white';
+      return isScrolled ? 'text-[#1A1A1A]' : 'text-white';
     }
-    return 'text-charcoal';
+    return 'text-[#1A1A1A]';
   };
 
   const getMutedTextColor = () => {
     if (isHomePage) {
-      return isScrolled ? 'text-warm-gray' : 'text-white/70';
+      return isScrolled ? 'text-[#1A1A1A]/70' : 'text-white/70';
     }
-    return 'text-warm-gray';
+    return 'text-[#1A1A1A]/70';
   };
 
-  const handleNavClick = (section: string) => {
-    if (onNavigate) {
-      onNavigate(section);
-    } else {
-      window.location.hash = section;
-    }
+  // ナビゲーションリンクを閉じる
+  const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
 
   const navLinks = [
-    { label: 'Shop', section: 'home', scrollTo: 'shop' },
-    { label: 'About Bizen', section: 'about-bizen' },
-    { label: 'About Us', section: 'about-us' },
-    { label: 'Contact', section: 'contact' },
+    { label: 'Shop', href: '/#shop' },
+    { label: 'About Bizen', href: '/about-bizen' },
+    { label: 'About Us', href: '/about-us' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -90,10 +83,7 @@ export function Header({ currentSection = 'home', onNavigate }: HeaderProps) {
       <div className="w-full px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <button
-            onClick={() => handleNavClick('home')}
-            className="flex items-center gap-2 group"
-          >
+          <Link href="/" className="flex items-center gap-2 group">
             <span
               className={`font-jp text-2xl lg:text-3xl font-bold transition-colors duration-500 ${getTextColor()}`}
             >
@@ -104,18 +94,18 @@ export function Header({ currentSection = 'home', onNavigate }: HeaderProps) {
             >
               otsu
             </span>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <button
-                key={link.section}
-                onClick={() => handleNavClick(link.section)}
+              <Link
+                key={link.href}
+                href={link.href}
                 className={`font-sans text-sm tracking-wide transition-colors duration-300 hover:opacity-70 ${getTextColor()}`}
               >
                 {link.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -129,18 +119,18 @@ export function Header({ currentSection = 'home', onNavigate }: HeaderProps) {
             </span>
 
             {/* Trade Link - Desktop */}
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="hidden lg:block font-sans text-xs text-terracotta hover:text-terracotta/80 transition-colors"
+            <Link
+              href="/contact"
+              className="hidden lg:block font-sans text-xs text-[#B8735A] hover:text-[#B8735A]/80 transition-colors"
             >
               Trade
-            </button>
+            </Link>
 
             {/* Shopping Bag with Cart Count */}
             <Link href="/cart" className={`relative p-2 transition-colors duration-500 ${getTextColor()}`}>
               <ShoppingBag className="w-5 h-5" strokeWidth={1.5} />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-terracotta text-white text-xs rounded-full flex items-center justify-center font-sans">
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#B8735A] text-white text-xs rounded-full flex items-center justify-center font-sans">
                   {cartCount}
                 </span>
               )}
@@ -155,43 +145,48 @@ export function Header({ currentSection = 'home', onNavigate }: HeaderProps) {
                   <Menu className="w-6 h-6" strokeWidth={1.5} />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-80 bg-off-white">
+              <SheetContent side="right" className="w-full sm:w-80 bg-[#F5F3EF]">
                 <div className="flex flex-col h-full pt-12">
                   <nav className="flex flex-col gap-6">
-                    <button
-                      onClick={() => handleNavClick('home')}
-                      className="font-serif text-2xl text-charcoal text-left hover:text-terracotta transition-colors text-left"
+                    <Link
+                      href="/"
+                      onClick={closeMobileMenu}
+                      className="font-serif text-2xl text-[#1A1A1A] text-left hover:text-[#B8735A] transition-colors"
                     >
                       Home
-                    </button>
-                    <button
-                      onClick={() => handleNavClick('about-bizen')}
-                      className="font-serif text-2xl text-charcoal text-left hover:text-terracotta transition-colors text-left"
+                    </Link>
+                    <Link
+                      href="/about-bizen"
+                      onClick={closeMobileMenu}
+                      className="font-serif text-2xl text-[#1A1A1A] text-left hover:text-[#B8735A] transition-colors"
                     >
                       About Bizen
-                    </button>
-                    <button
-                      onClick={() => handleNavClick('about-us')}
-                      className="font-serif text-2xl text-charcoal text-left hover:text-terracotta transition-colors text-left"
+                    </Link>
+                    <Link
+                      href="/about-us"
+                      onClick={closeMobileMenu}
+                      className="font-serif text-2xl text-[#1A1A1A] text-left hover:text-[#B8735A] transition-colors"
                     >
                       About Us
-                    </button>
-                    <button
-                      onClick={() => handleNavClick('contact')}
-                      className="font-serif text-2xl text-charcoal text-left hover:text-terracotta transition-colors text-left"
+                    </Link>
+                    <Link
+                      href="/contact"
+                      onClick={closeMobileMenu}
+                      className="font-serif text-2xl text-[#1A1A1A] text-left hover:text-[#B8735A] transition-colors"
                     >
                       Contact
-                    </button>
+                    </Link>
                   </nav>
                   <div className="mt-auto pb-8">
-                    <div className="flex items-center gap-4 text-sm text-warm-gray">
+                    <div className="flex items-center gap-4 text-sm text-[#1A1A1A]/70">
                       <span>EN / JP</span>
-                      <button 
-                        onClick={() => handleNavClick('contact')}
-                        className="text-terracotta"
+                      <Link 
+                        href="/contact"
+                        onClick={closeMobileMenu}
+                        className="text-[#B8735A]"
                       >
                         Trade
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -23,13 +23,20 @@ export default function ProductPage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-off-white">
-      <div className="h-20" />
-      
-      <div className="w-full px-6 lg:px-12 py-12 lg:py-20">
+    <div className="min-h-screen bg-[#F5F3EF]">
+      {/* ヘッダー：ロゴのみ・左寄せ・墨黒 */}
+      <header className="w-full py-6 px-8 bg-[#F5F3EF]">
+        <div className="max-w-7xl mx-auto">
+          <Link href="/" className="text-2xl font-serif text-[#1A1A1A] tracking-wider">
+            乙 otsu
+          </Link>
+        </div>
+      </header>
+
+      <main className="w-full px-6 lg:px-12 py-12 lg:py-20">
         <Link 
           href="/#shop" 
-          className="inline-flex items-center text-warm-gray hover:text-terracotta mb-8 transition-colors"
+          className="inline-flex items-center text-[#1A1A1A]/70 hover:text-[#B8735A] mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Collection
@@ -49,19 +56,19 @@ export default function ProductPage({ params }: Props) {
 
           <div className="flex flex-col justify-center">
             <div className="mb-8">
-              <p className="text-terracotta text-sm uppercase tracking-widest mb-2">
+              <p className="text-[#B8735A] text-sm uppercase tracking-widest mb-2">
                 Selected Work
               </p>
-              <h1 className="font-serif text-4xl text-charcoal mb-4">
+              <h1 className="font-serif text-4xl text-[#1A1A1A] mb-4">
                 {product.name}
               </h1>
-              <p className="text-3xl font-sans font-light text-charcoal">
+              <p className="text-3xl font-sans font-light text-[#1A1A1A]">
                 £{product.price}
               </p>
             </div>
 
             <div className="prose prose-stone mb-8">
-              <p className="text-warm-gray leading-relaxed">
+              <p className="text-[#1A1A1A]/70 leading-relaxed">
                 {product.description || "Crafted in Bizen, Okayama. Wood-fired for 14 days in a traditional climbing kiln. Each piece is unique, shaped by earth, fire, and serendipity."}
               </p>
             </div>
@@ -81,11 +88,11 @@ export default function ProductPage({ params }: Props) {
               />
             </div>
 
-            <div className="mt-12 pt-8 border-t border-warm-gray/30">
-              <h3 className="font-sans text-lg text-charcoal mb-4">
+            <div className="mt-12 pt-8 border-t border-[#1A1A1A]/10">
+              <h3 className="font-sans text-lg text-[#1A1A1A] mb-4">
                 Craftsmanship Details
               </h3>
-              <ul className="space-y-2 text-sm text-warm-gray">
+              <ul className="space-y-2 text-sm text-[#1A1A1A]/70">
                 <li>• Handcrafted in Bizen, Okayama Prefecture</li>
                 <li>• Wood-fired for 14 days in traditional noborigama</li>
                 <li>• Unglazed surface develops patina with use</li>
@@ -95,7 +102,7 @@ export default function ProductPage({ params }: Props) {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

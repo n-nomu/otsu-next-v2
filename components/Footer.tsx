@@ -1,115 +1,85 @@
 import Link from 'next/link';
-import { CreditCard } from 'lucide-react';
 
-interface FooterProps {
-  onNavigate?: (section: string) => void;
-}
-
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const navLinks = [
-    { label: 'Shop', section: 'home' },
-    { label: 'About Bizen', section: 'about-bizen' },
-    { label: 'About Us', section: 'about-us' },
-    { label: 'Contact', section: 'contact' },
-  ];
-
-  const handleNavClick = (section: string) => {
-    if (onNavigate) {
-      onNavigate(section);
-    } else {
-      window.location.hash = section;
-    }
-  };
-
   return (
-    <footer className="w-full bg-charcoal py-12 border-t border-white/10">
-      <div className="w-full px-6 lg:px-12">
-        {/* Navigation Links */}
-        <div className="flex flex-wrap justify-center gap-6 lg:gap-10 mb-10">
-          {navLinks.map((link) => (
-            <button
-              key={link.section}
-              onClick={() => handleNavClick(link.section)}
-              className="font-sans text-sm text-white/70 hover:text-white transition-colors"
-            >
-              {link.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center border-t border-white/10 pt-10">
-          {/* Left - Logo & Copyright */}
-          <div className="text-center md:text-left">
-            <button 
-              onClick={() => handleNavClick('home')}
-              className="flex items-center justify-center md:justify-start gap-2 mb-3"
-            >
-              <span className="font-jp text-xl text-white">乙</span>
-              <span className="font-serif text-xl text-white lowercase">
-                otsu
-              </span>
-            </button>
-            <p className="font-sans text-xs text-white/50">
-              © {currentYear} otsu. All rights reserved.
+    <footer className="bg-[#1A1A1A] text-white py-12 px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* Brand */}
+          <div className="md:col-span-1">
+            <h3 className="text-2xl font-serif mb-4">乙 otsu</h3>
+            <p className="text-white/60 text-sm leading-relaxed">
+              Handcrafted Bizen ware from Okayama, Japan.<br />
+              Bridging ancient artistry to modern living.
             </p>
           </div>
 
-          {/* Center - Legal Links */}
-          <div className="flex flex-wrap justify-center gap-4 lg:gap-6 items-center">
-            <Link
-              href="/legal/terms"
-              className="font-sans text-xs text-white/50 hover:text-white transition-colors"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="/legal/privacy"
-              className="font-sans text-xs text-white/50 hover:text-white transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/legal/shipping"
-              className="font-sans text-xs text-white/50 hover:text-white transition-colors"
-            >
-              Shipping
-            </Link>
-            <span className="text-white/30">|</span>
-            <Link
-              href="/legal/returns"
-              className="font-sans text-xs text-white/50 hover:text-white transition-colors"
-            >
-              Returns
-            </Link>
-            <Link
-              href="#"
-              className="font-sans text-xs text-white/50 hover:text-white transition-colors"
-            >
-              Trade Terms
-            </Link>
+          {/* Shop Links */}
+          <div>
+            <h4 className="font-sans text-sm uppercase tracking-widest mb-4 text-white/80">Shop</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/#shop" className="text-white/60 hover:text-white transition-colors text-sm">
+                  Collection
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Right - Payment Methods */}
-          <div className="flex justify-center md:justify-end gap-3">
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded">
-              <CreditCard className="w-4 h-4 text-white/70" />
-              <span className="font-sans text-xs text-white/70">Stripe</span>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded">
-              <span className="font-sans text-xs text-white/70">Apple Pay</span>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded">
-              <span className="font-sans text-xs text-white/70">Google Pay</span>
-            </div>
+          {/* About Links */}
+          <div>
+            <h4 className="font-sans text-sm uppercase tracking-widest mb-4 text-white/80">About</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/about-bizen" className="text-white/60 hover:text-white transition-colors text-sm">
+                  About Bizen
+                </Link>
+              </li>
+              <li>
+                <Link href="/about-us" className="text-white/60 hover:text-white transition-colors text-sm">
+                  About Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Support Links */}
+          <div>
+            <h4 className="font-sans text-sm uppercase tracking-widest mb-4 text-white/80">Support</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/contact" className="text-white/60 hover:text-white transition-colors text-sm">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/legal/shipping" className="text-white/60 hover:text-white transition-colors text-sm">
+                  Shipping
+                </Link>
+              </li>
+              <li>
+                <Link href="/legal/returns" className="text-white/60 hover:text-white transition-colors text-sm">
+                  Returns
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Disclaimer */}
-        <div className="mt-8 pt-6 border-t border-white/5 text-center">
-          <p className="font-sans text-xs text-white/40">
-            Prices include VAT for UK orders. International orders may be subject to import duties.
+        {/* Legal & Copyright */}
+        <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex gap-6 text-sm text-white/60">
+            <Link href="/legal/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/legal/privacy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+          </div>
+          <p className="text-white/40 text-sm">
+            © {currentYear} 乙 otsu. All rights reserved.
           </p>
         </div>
       </div>
