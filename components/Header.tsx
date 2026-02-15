@@ -1,7 +1,10 @@
-"use client"; 
+"use client";
+
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { ShoppingBag, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { getCartCount } from '@/lib/cart';
 
 interface HeaderProps {
   currentSection?: string;
@@ -11,6 +14,7 @@ interface HeaderProps {
 export function Header({ currentSection = 'home', onNavigate }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
   // Check if we're on the homepage (no hash or #home)
   const isHomePage = currentSection === 'home' || currentSection === '';
@@ -20,18 +24,32 @@ export function Header({ currentSection = 'home', onNavigate }: HeaderProps) {
       setIsScrolled(window.scrollY > 100);
     };
 
+    // カート数を更新
+    const updateCartCount = () => {
+      setCartCount(getCartCount());
+    };
+
+    // 初期表示時にカート数を取得
+    updateCartCount();
+
+    // スクロール監視
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    // カート変更イベントを監視
+    window.addEventListener('cartUpdated', updateCartCount);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('cartUpdated', updateCartCount);
+    };
   }, []);
 
-  // Determine header style based on page and scroll
   const getHeaderStyle = () => {
     if (isHomePage) {
       return isScrolled
         ? 'bg-white/95 backdrop-blur-md shadow-sm'
         : 'bg-transparent';
     }
-    // For other pages, always show white header
     return 'bg-white/95 backdrop-blur-md shadow-sm';
   };
 
@@ -118,12 +136,15 @@ export function Header({ currentSection = 'home', onNavigate }: HeaderProps) {
               Trade
             </button>
 
-            {/* Shopping Bag */}
-            <button
-              className={`p-2 transition-colors duration-500 ${getTextColor()}`}
-            >
+            {/* Shopping Bag with Cart Count */}
+            <Link href="/cart" className={`relative p-2 transition-colors duration-500 ${getTextColor()}`}>
               <ShoppingBag className="w-5 h-5" strokeWidth={1.5} />
-            </button>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-terracotta text-white text-xs rounded-full flex items-center justify-center font-sans">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
 
             {/* Mobile Menu */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
