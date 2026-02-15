@@ -34,6 +34,7 @@ export async function POST(request: NextRequest) {
       mode: "payment", // 一回払い
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/success`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/cancel`,
+      locale: 'en', // ← 追加：決済画面を英語固定に
     });
 
     // Checkout URLを返す
