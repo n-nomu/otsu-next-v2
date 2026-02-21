@@ -43,15 +43,32 @@ export default function ProductPage({ params }: Props) {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
-              priority
-            />
+          {/* 画像セクション：メイン＋サブ画像 */}
+          <div className="space-y-4">
+            {/* メイン画像 */}
+            <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+            
+            {/* サブ画像（image2があれば表示） */}
+            {product.image2 && (
+              <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden">
+                <Image
+                  src={product.image2}
+                  alt={`${product.name} - view 2`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col justify-center">
@@ -68,8 +85,8 @@ export default function ProductPage({ params }: Props) {
             </div>
 
             <div className="prose prose-stone mb-8">
-              <p className="text-[#1A1A1A]/70 leading-relaxed">
-                {product.description || "Crafted in Bizen, Okayama. Wood-fired for 14 days in a traditional climbing kiln. Each piece is unique, shaped by earth, fire, and serendipity."}
+              <p className="text-[#1A1A1A]/70 leading-relaxed whitespace-pre-line">
+                {product.description || "Crafted in Bizen, Okayama. Each piece is unique, shaped by earth, fire, and serendipity."}
               </p>
             </div>
 
@@ -86,19 +103,6 @@ export default function ProductPage({ params }: Props) {
                 price={product.price}
                 image={product.image}
               />
-            </div>
-
-            <div className="mt-12 pt-8 border-t border-[#1A1A1A]/10">
-              <h3 className="font-sans text-lg text-[#1A1A1A] mb-4">
-                Craftsmanship Details
-              </h3>
-              <ul className="space-y-2 text-sm text-[#1A1A1A]/70">
-                <li>• Handcrafted in Bizen, Okayama Prefecture</li>
-                <li>• Wood-fired for 14 days in traditional noborigama</li>
-                <li>• Unglazed surface develops patina with use</li>
-                <li>• One-of-a-kind piece (variations in color and texture)</li>
-                <li>• Shipping from London within 3-5 business days</li>
-              </ul>
             </div>
           </div>
         </div>

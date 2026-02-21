@@ -4,15 +4,17 @@ export interface Product {
   price: number;
   description: string;
   image: string;
+  image2?: string;
 }
 
 export const products: Product[] = [
   {
     id: "1",
-    name: "Bizen Tea Bowl — Hidasuki",
-    price: 180,
-    description: "",
-    image: "/product_tea_bowl.jpg",
+    name: "Bizen Sake Set — Tokkuri & Guinomi",
+    price: 260,
+    description: "A sake flask (tokkuri) and cup (guinomi) set, fired in Bizen, Okayama.\n\nThe flask features natural ash glaze patterns and incised lines carved into the clay body. The cup shares the same warm, earthy tones. Both pieces rest on a wooden stand.\n\nHandmade in Bizen, Okayama Prefecture. Shipped directly from the artisan's studio.\n\n[Dimensions and weight to be added]",
+    image: "/product_1_1.jpg",
+    image2: "/product_1_2.jpg",
   },
   {
     id: "2",
