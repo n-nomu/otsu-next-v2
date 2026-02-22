@@ -157,6 +157,27 @@ Capacity: Approx. [ ] ml each`,
     soldOut: false
   },
   {
+    id: "11",
+    name: "Bizen-yaki Free Cup: Deep Iron and Scorched Earth",
+    price: 200,
+    description: `*A Reflection of Intense Fire.*
+
+This single free cup features a somber, deep-toned exterior resulting from high-temperature firing. The surface is dominated by iron-black and dark russet hues, with a subtle metallic sheen visible in certain areas. The unglazed finish highlights the raw, mineral-rich composition of the Bizen clay, offering a direct tactile connection to the material.
+
+*Distinct Coloration:* A profound blend of charcoal and oxidized earth tones, unique to this specific firing.
+
+*Internal Detail:* The interior reveals rhythmic, concentric ridges formed during the hand-sculpting process on the potter's wheel.
+
+*Direct Origin:* Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
+    image: "/product_11_1.jpg",
+    image2: "/product_11_2.jpg",
+    dimensions: `Height: [Insert Height] mm
+Diameter: [Insert Diameter] mm
+Weight: [Insert Weight] g
+Capacity: Approx. [Insert Volume] ml`,
+    soldOut: false
+  },
+  {
     id: "3",
     name: "Rice Bowl Set (2)",
     price: 220,
