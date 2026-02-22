@@ -6,6 +6,7 @@ export interface Product {
   image: string;
   image2?: string;
   dimensions?: string;
+  soldOut?: boolean; // Sold Out用フィールド追加
 }
 
 export const products: Product[] = [
@@ -46,11 +47,30 @@ Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml`
   },
   {
-    id: "3",
+    id: "7", // 新規ID：Shopページで3番目に表示
+    name: "Bizen-yaki Sake Set: Silvery Ash and Earth Tones",
+    price: 260,
+    description: `Subtle Elegance.
+This set is distinguished by its refined palette of soft grey and warm russet. The upper portion of the flask features a natural "Hai-kaburi" (ash-covered) effect, where intense heat has transformed wood ash into a subtle, metallic luster. Below, the natural reddish-brown of the Bizen clay emerges, creating a gentle gradient that reflects the unpredictable nature of the kiln.
+
+Silver-Grey Sheen: The unique ash deposits create a quiet, sophisticated glow that changes with the light.
+
+Balanced Form: A slender, elegant silhouette that showcases the natural texture of the unglazed clay.
+
+Direct Lineage: Handcrafted in Bizen, Okayama, and shipped directly from the studio.`,
+    image: "/product_7_1.jpg",
+    image2: "/product_7_2.jpg",
+    dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
+Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
+Capacity: Approx. [ ] ml`
+  },
+  {
+    id: "3", // Sold Outに変更
     name: "Rice Bowl Set (2)",
     price: 220,
     description: "",
     image: "/product_rice_bowls.jpg",
+    soldOut: true // Sold Outフラグ追加
   },
   {
     id: "4",

@@ -117,20 +117,37 @@ export default function ProductPage({ params }: Props) {
               </p>
             </div>
 
+            {/* 在庫状況（Sold Out対応） */}
             <div>
-              <span className="text-green-700 text-sm font-medium">
-                ● In Stock
-              </span>
+              {product.soldOut ? (
+                <span className="text-gray-500 text-sm font-medium">
+                  ● Sold Out
+                </span>
+              ) : (
+                <span className="text-green-700 text-sm font-medium">
+                  ● In Stock
+                </span>
+              )}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <AddToCartButton 
-                productId={product.id}
-                productName={product.name}
-                price={product.price}
-                image={product.image}
-              />
-            </div>
+            {/* カートボタンまたはSold Out表示 */}
+            {product.soldOut ? (
+              <button
+                disabled
+                className="w-full px-8 py-4 bg-gray-300 text-white font-medium cursor-not-allowed"
+              >
+                Sold Out — Unavailable
+              </button>
+            ) : (
+              <div className="flex flex-col sm:flex-row gap-4">
+                <AddToCartButton 
+                  productId={product.id}
+                  productName={product.name}
+                  price={product.price}
+                  image={product.image}
+                />
+              </div>
+            )}
           </div>
         </div>
       </main>

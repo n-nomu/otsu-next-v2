@@ -34,7 +34,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
         ref={cardRef}
         className={`group cursor-pointer transition-all duration-700 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}
+        } ${product.soldOut ? 'opacity-75' : ''}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -46,13 +46,21 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className={`object-cover transition-transform duration-700 ${
-              isHovered ? 'scale-105' : 'scale-100'
-            }`}
+              isHovered && !product.soldOut ? 'scale-105' : 'scale-100'
+            } ${product.soldOut ? 'grayscale-[30%]' : ''}`}
           />
+          
+          {/* Sold Out Badge */}
+          {product.soldOut && (
+            <div className="absolute top-4 left-4 px-3 py-1 bg-[#1A1A1A] text-white text-xs font-medium tracking-wider uppercase">
+              Sold Out
+            </div>
+          )}
+          
           {/* Hover Overlay */}
           <div
             className={`absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity duration-300 ${
-              isHovered ? 'opacity-100' : 'opacity-0'
+              isHovered && !product.soldOut ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <span className="px-6 py-2 bg-white text-charcoal text-sm font-medium rounded-full">
@@ -63,12 +71,20 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
 
         {/* Product Info */}
         <div className="space-y-1">
-          <h3 className="font-sans text-sm text-charcoal group-hover:text-terracotta transition-colors">
+          <h3 className={`font-sans text-sm group-hover:text-terracotta transition-colors ${
+            product.soldOut ? 'text-gray-500' : 'text-charcoal'
+          }`}>
             {product.name}
           </h3>
-          <p className="font-sans text-lg font-medium text-terracotta">
-            £{product.price}
-          </p>
+          {product.soldOut ? (
+            <p className="font-sans text-lg font-medium text-gray-400">
+              Sold Out
+            </p>
+          ) : (
+            <p className="font-sans text-lg font-medium text-terracotta">
+              £{product.price}
+            </p>
+          )}
         </div>
       </div>
     </Link>
