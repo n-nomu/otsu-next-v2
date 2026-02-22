@@ -88,6 +88,26 @@ Guinomi (Right): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`
   },
   {
+    id: "5",
+    name: "Bizen-yaki Tea Cup: Crimson Fire and Iron Earth",
+    price: 100,
+    description: `A Study in Duality.
+This teacup captures the dramatic essence of the kiln's flame. One side features a vibrant, scorched crimson hue—known as Hiiro—while the other transitions into a deep, matte charcoal with hints of metallic bronze. The subtle horizontal ridges from the potter's wheel add a rhythmic texture, creating a piece that feels grounded yet full of movement.
+
+Dynamic Gradient: The stark contrast between the warm earth tones and the dark, fired surface is a natural result of the placement within the kiln.
+
+Ergonomic Simplicity: A classic cylindrical form that fits naturally in the hands, allowing the user to feel the raw, unglazed texture of Bizen clay.
+
+Direct Heritage: Hand-sculpted in Okayama and shipped directly from the artisan's studio.`,
+    image: "/product_5_1.jpg",
+    image2: "/product_5_2.jpg",
+    dimensions: `Height [Insert H] mm
+Diameter [Insert D] mm
+Weight [Insert W] g
+Capacity: Approx. [Insert C] ml`,
+    soldOut: false
+  },
+  {
     id: "3",
     name: "Rice Bowl Set (2)",
     price: 220,
@@ -102,13 +122,6 @@ Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`
     description: "",
     image: "/product_sake_flask.jpg",
     soldOut: true
-  },
-  {
-    id: "5",
-    name: "Round Plate — Yohen",
-    price: 260,
-    description: "",
-    image: "/product_plate.jpg",
   },
   {
     id: "6",
