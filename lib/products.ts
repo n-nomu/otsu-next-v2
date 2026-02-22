@@ -101,6 +101,7 @@ Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`
     price: 195,
     description: "",
     image: "/product_sake_flask.jpg",
+    soldOut: true
   },
   {
     id: "5",
@@ -115,6 +116,7 @@ Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`
     price: 310,
     description: "",
     image: "/product_jar.jpg",
+    soldOut: true
   },
 ];
 
