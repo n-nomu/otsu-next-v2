@@ -30,10 +30,20 @@ Capacity: Approx. [ ] ml`
   },
   {
     id: "2",
-    name: "Flower Vase — Goma",
-    price: 340,
-    description: "",
-    image: "/product_vase.jpg",
+    name: "Bizen-yaki Sake Set: Deep Tones and Flowing Ash",
+    price: 260,
+    description: `A Contrast of Stillness and Movement.
+This handcrafted set features a profound, dark clay body that evokes a sense of quietude. The surface is naturally adorned with a dramatic "Goma" (sesame seed) glaze—a golden-hued ash deposit that flows gracefully across the deep charcoal base. This striking visual is achieved through an intense, days-long firing process where red pine ash melts and vitrifies, creating a one-of-a-kind organic pattern.
+
+Unique Contrast: The interplay between the dark, scorched earth and the luminous natural ash creates a sophisticated, modern aesthetic.
+
+Timeless Texture: The unglazed surface retains a refined yet earthy feel, designed to deepen in luster and character with years of use.
+
+Direct Heritage: Handmade in Bizen, Okayama, and shipped directly from the artisan's studio to preserve its story.`,
+    image: "/product_2_1.jpg",
+    dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
+Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
+Capacity: Approx. [ ] ml`
   },
   {
     id: "3",
