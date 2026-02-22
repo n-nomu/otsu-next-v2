@@ -1,15 +1,12 @@
-import { products, getProductById } from "@/lib/products";
+"use client";
+
+import { useState } from "react";
+import { getProductById } from "@/lib/products";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { AddToCartButton } from "@/components/AddToCartButton";
-
-export function generateStaticParams() {
-  return products.map((product) => ({
-    id: product.id,
-  }));
-}
 
 interface Props {
   params: { id: string };
@@ -17,6 +14,8 @@ interface Props {
 
 export default function ProductPage({ params }: Props) {
   const product = getProductById(params.id);
+  
+  const [mainImage, setMainImage] = useState<string>(product?.image || "");
 
   if (!product) {
     notFound();
@@ -24,7 +23,6 @@ export default function ProductPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-[#F5F3EF]">
-      {/* ヘッダー：ロゴのみ・左寄せ・墨黒 */}
       <header className="w-full py-6 px-8 bg-[#F5F3EF]">
         <div className="max-w-7xl mx-auto">
           <Link href="/" className="text-2xl font-serif text-[#1A1A1A] tracking-wider">
@@ -42,13 +40,11 @@ export default function ProductPage({ params }: Props) {
           Back to Collection
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* 画像セクション：メイン＋サブ画像 */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div className="space-y-4">
-            {/* メイン画像 */}
-            <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden">
+            <div className="relative aspect-square bg-white overflow-hidden">
               <Image
-                src={product.image}
+                src={mainImage}
                 alt={product.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -57,40 +53,71 @@ export default function ProductPage({ params }: Props) {
               />
             </div>
             
-            {/* サブ画像（image2があれば表示） */}
-            {product.image2 && (
-              <div className="relative aspect-[4/5] bg-white rounded-lg overflow-hidden">
+            <div className="flex gap-3">
+              <button
+                onClick={() => setMainImage(product.image || "")}
+                className={`relative w-20 h-20 bg-white overflow-hidden border-2 transition-colors ${
+                  mainImage === product.image ? "border-[#1A1A1A]" : "border-[#1A1A1A]/10 hover:border-[#1A1A1A]/30"
+                }`}
+              >
                 <Image
-                  src={product.image2}
-                  alt={`${product.name} - view 2`}
+                  src={product.image}
+                  alt={`${product.name} - main view`}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  sizes="80px"
                   className="object-cover"
                 />
-              </div>
-            )}
+              </button>
+              
+              {product.image2 && (
+                <button
+                  onClick={() => setMainImage(product.image2 || "")}
+                  className={`relative w-20 h-20 bg-white overflow-hidden border-2 transition-colors ${
+                    mainImage === product.image2 ? "border-[#1A1A1A]" : "border-[#1A1A1A]/10 hover:border-[#1A1A1A]/30"
+                  }`}
+                >
+                  <Image
+                    src={product.image2}
+                    alt={`${product.name} - view 2`}
+                    fill
+                    sizes="80px"
+                    className="object-cover"
+                  />
+                </button>
+              )}
+            </div>
           </div>
 
-          <div className="flex flex-col justify-center">
-            <div className="mb-8">
+          <div className="lg:sticky lg:top-32 space-y-8">
+            <div>
               <p className="text-[#B8735A] text-sm uppercase tracking-widest mb-2">
                 Selected Work
               </p>
-              <h1 className="font-serif text-4xl text-[#1A1A1A] mb-4">
+              <h1 className="font-serif text-3xl lg:text-4xl text-[#1A1A1A] mb-4 leading-tight">
                 {product.name}
               </h1>
-              <p className="text-3xl font-sans font-light text-[#1A1A1A]">
+              <p className="text-2xl font-sans font-light text-[#1A1A1A]">
                 £{product.price}
               </p>
             </div>
 
-            <div className="prose prose-stone mb-8">
-              <p className="text-[#1A1A1A]/70 leading-relaxed whitespace-pre-line">
+            <div className="prose prose-stone">
+              <p className="text-[#1A1A1A]/70 leading-relaxed whitespace-pre-line text-base">
                 {product.description || "Crafted in Bizen, Okayama. Each piece is unique, shaped by earth, fire, and serendipity."}
               </p>
             </div>
 
-            <div className="mb-8">
+            {/* 寸法セクション（常に表示） */}
+            <div className="border-t border-[#1A1A1A]/10 pt-6">
+              <h2 className="text-sm uppercase tracking-widest text-[#1A1A1A] mb-3">
+                Dimensions & Capacity
+              </h2>
+              <p className="text-[#1A1A1A]/70 text-sm leading-relaxed whitespace-pre-line">
+                {product.dimensions || "Dimensions and capacity details will be added shortly."}
+              </p>
+            </div>
+
+            <div>
               <span className="text-green-700 text-sm font-medium">
                 ● In Stock
               </span>

@@ -5,16 +5,28 @@ export interface Product {
   description: string;
   image: string;
   image2?: string;
+  dimensions?: string;
 }
 
 export const products: Product[] = [
   {
     id: "1",
-    name: "Bizen Sake Set — Tokkuri & Guinomi",
+    name: "Bizen-yaki Sake Set: The Essence of Earth and Fire",
     price: 260,
-    description: "A sake flask (tokkuri) and cup (guinomi) set, fired in Bizen, Okayama.\n\nThe flask features natural ash glaze patterns and incised lines carved into the clay body. The cup shares the same warm, earthy tones. Both pieces rest on a wooden stand.\n\nHandmade in Bizen, Okayama Prefecture. Shipped directly from the artisan's studio.\n\n[Dimensions and weight to be added]",
+    description: `The Beauty of Imperfection.
+
+This tokkuri and guinomi set showcases the raw, powerful aesthetic of Bizen-yaki. The flask is characterized by intentional incised lines (kushime) and a rich, variegated surface born from a high-temperature firing process fueled by red pine wood. These natural markings are not painted; they are the result of wood ash melting onto the clay, creating a unique "landscape" for this specific piece.
+
+Hand-Incised Detail (Kushime): Features rhythmic lines carved into the clay, providing a secure grip and a modern, artisanal silhouette.
+
+Natural Texture: The unglazed, iron-rich surface offers a tactile experience that connects the user directly to the earth of Okayama.
+
+Direct Provenance: Handcrafted in Bizen and shipped directly from the artisan's studio.`,
     image: "/product_1_1.jpg",
     image2: "/product_1_2.jpg",
+    dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
+Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
+Capacity: Approx. [ ] ml`
   },
   {
     id: "2",
