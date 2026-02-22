@@ -6,7 +6,7 @@ export interface Product {
   image: string;
   image2?: string;
   dimensions?: string;
-  soldOut?: boolean; // Sold Out用フィールド追加
+  soldOut?: boolean;
 }
 
 export const products: Product[] = [
@@ -47,7 +47,7 @@ Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml`
   },
   {
-    id: "7", // 新規ID：Shopページで3番目に表示
+    id: "7",
     name: "Bizen-yaki Sake Set: Silvery Ash and Earth Tones",
     price: 260,
     description: `Subtle Elegance.
@@ -65,12 +65,35 @@ Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml`
   },
   {
-    id: "3", // Sold Outに変更
+    id: "8",
+    name: "Bizen-yaki Sake Set: Earthy Texture and Deep Bronze",
+    price: 380,
+    description: `A Presence of Time and Fire.
+This three-piece set is defined by its rugged, tactile surface and rich bronze-like hues. The tokkuri exhibits a coarse, organic texture—a result of the unique composition of Bizen clay reacting to the intense heat of the kiln. With two accompanying guinomi, each showing distinct firing marks and subtle gloss, this set is designed for a shared experience of authentic Japanese craft.
+
+Textural Depth: Features a "Kase" (withered) skin with fine protrusions, offering a raw and primal grip that celebrates the clay's origin.
+
+Warm Earth Tones: A harmonious blend of deep reddish-browns and charred charcoal tones, achieved without any artificial pigments.
+
+Complete Set for Two: Includes one tokkuri and two guinomi, each handcrafted and shipped directly from the artisan's studio.
+
+Direct Origin: Created in Bizen, Okayama, and delivered from the kiln to your table.
+
+Popular as a gift for weddings, anniversaries, and special celebrations.`,
+    image: "/product_8_1.jpg",
+    image2: "/product_8_2.jpg",
+    dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
+Guinomi (Left): Height [ ] × Width [ ] mm | Weight [ ] g
+Guinomi (Right): Height [ ] × Width [ ] mm | Weight [ ] g
+Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`
+  },
+  {
+    id: "3",
     name: "Rice Bowl Set (2)",
     price: 220,
     description: "",
     image: "/product_rice_bowls.jpg",
-    soldOut: true // Sold Outフラグ追加
+    soldOut: true
   },
   {
     id: "4",
