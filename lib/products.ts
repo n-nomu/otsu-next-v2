@@ -23,8 +23,8 @@ Incised Detail (Kushime): Features rhythmic lines carved into the clay, providin
 Natural Texture: The unglazed, iron-rich surface offers a tactile experience that connects the user directly to the earth of Okayama.
 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
-    image: "/product_1_1.jpg",
-    image2: "/product_1_2.jpg",
+    image: "/product_1_1.webp",
+    image2: "/product_1_2.webp",
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml`
@@ -41,7 +41,7 @@ Unique Contrast: The interplay between the dark, scorched earth and the rich nat
 Timeless Texture: The unglazed surface retains a refined yet earthy feel, designed to deepen in character with years of use.
 
 Direct Origin: Handmade in Bizen, Okayama, and shipped directly from the artisan's studio to preserve its story.`,
-    image: "/product_2_1.jpg",
+    image: "/product_2_1.webp",
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml`
@@ -58,8 +58,8 @@ Soft Grey Surface: The unique ash deposits create a quiet, sophisticated presenc
 Balanced Form: A slender, elegant silhouette that showcases the natural texture of the unglazed clay.
 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the studio.`,
-    image: "/product_7_1.jpg",
-    image2: "/product_7_2.jpg",
+    image: "/product_7_1.webp",
+    image2: "/product_7_2.webp",
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml`
@@ -81,8 +81,8 @@ Direct Origin: Created in Bizen, Okayama, and delivered from the kiln to your ta
 
 A Meaningful Gift
 This pairing of two distinct "landscapes" symbolizes the harmony between two individuals—ideal for commemorating a bond, a shared journey, or special celebrations.`,
-    image: "/product_8_1.jpg",
-    image2: "/product_8_2.jpg",
+    image: "/product_8_1.webp",
+    image2: "/product_8_2.webp",
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Left): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Right): Height [ ] × Width [ ] mm | Weight [ ] g
@@ -100,8 +100,8 @@ Dynamic Gradient: The stark contrast between the warm earth tones and the dark, 
 Ergonomic Simplicity: A classic cylindrical form that fits naturally in the hands, allowing the user to feel the raw, unglazed texture of Bizen clay.
 
 Direct Origin: Hand-sculpted in Okayama and shipped directly from the artisan's studio.`,
-    image: "/product_5_1.jpg",
-    image2: "/product_5_2.jpg",
+    image: "/product_5_1.webp",
+    image2: "/product_5_2.webp",
     dimensions: `Height [Insert H] mm
 Diameter [Insert D] mm
 Weight [Insert W] g
@@ -124,8 +124,8 @@ Direct Origin: Hand-sculpted in Okayama and shipped directly from the artisan's 
 
 A Meaningful Gift
 The pairing of two distinct "landscapes" symbolizes the harmony between two individuals—ideal for commemorating a bond, a shared journey, or special celebrations.`,
-    image: "/product_9_2.jpg",
-    image2: "/product_9_1.jpg",
+    image: "/product_9_2.webp",
+    image2: "/product_9_1.webp",
     dimensions: `Cup (Left): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Cup (Right): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml each`,
@@ -149,8 +149,8 @@ This pair of cups features a complex color palette achieved through prolonged wo
 
 *Ideal for Gifting*
 With their complementary yet distinct colorations, this set is a popular choice for meaningful gifts.`,
-    image: "/product_10_1.jpg",
-    image2: "/product_10_2.jpg",
+    image: "/product_10_1.webp",
+    image2: "/product_10_2.webp",
     dimensions: `Cup (Left): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Cup (Right): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml each`,
@@ -169,8 +169,8 @@ This single free cup features a somber, deep-toned exterior resulting from high-
 *Internal Detail:* The interior reveals rhythmic, concentric ridges formed during the hand-sculpting process on the potter's wheel.
 
 *Direct Origin:* Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
-    image: "/product_11_1.jpg",
-    image2: "/product_11_2.jpg",
+    image: "/product_11_1.webp",
+    image2: "/product_11_2.webp",
     dimensions: `Height: [Insert Height] mm
 Diameter: [Insert Diameter] mm
 Weight: [Insert Weight] g
