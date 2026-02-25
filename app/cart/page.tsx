@@ -7,7 +7,6 @@ import { Footer } from '@/components/Footer';
 import { getCart, CartItem, removeFromCart, updateQuantity, clearCart } from '@/lib/cart';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
 import { calculateShipping, COUNTRIES, CountryCode } from '@/lib/shipping';
-import { useCurrency } from '@/lib/currency-context';
 import { products } from '@/lib/products';
 
 export default function CartPage() {
@@ -15,12 +14,14 @@ export default function CartPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<CountryCode>('GB');
-  const { currency } = useCurrency();
 
   useEffect(() => {
     setCart(getCart());
     setIsLoading(false);
   }, []);
+
+  // 為替レート（£1 = $1.4）
+  const exchangeRate = 1.4;
 
   // 総重量計算（グラム）
   const totalWeight = cart.reduce((sum, item) => {
@@ -31,32 +32,38 @@ export default function CartPage() {
   // 送料計算（USDベース）
   const shippingCostUSD = calculateShipping(selectedCountry, totalWeight);
   
-  // 為替レート（£1 = $1.4）
-  const exchangeRate = 1.4;
-
-  // 通貨記号の決定
-  // 商品価格・合計はサイトの通貨設定に従う
-  const priceSymbol = currency === 'GBP' ? '£' : '$';
-  
-  // 送料のみ配送先国に応じて変更（イギリスのみ£、その他は$）
+  // 配送先国に基づいて通貨を決定（英国のみ£、それ以外は$）
   const isUK = selectedCountry === 'GB';
-  const shippingSymbol = isUK ? '£' : '$';
+  const symbol = isUK ? '£' : '$';
+  
+  // 送料の表示（配送先国の通貨で）
   const shippingDisplayCost = isUK 
     ? (shippingCostUSD / exchangeRate).toFixed(2)  // USD→GBP
     : shippingCostUSD.toFixed(2);
 
-  // サイト通貨での送料（合計計算用）
-  const shippingInSiteCurrency = currency === 'GBP' 
+  // 送料（合計計算用）
+  const shippingInDisplayCurrency = isUK 
     ? shippingCostUSD / exchangeRate 
     : shippingCostUSD;
 
-  // 小計（サイト通貨）
-  const subtotal = cart.reduce((sum, item) => {
+  // 小計（配送先国の通貨で計算）
+  const subtotalBase = cart.reduce((sum, item) => {
     return sum + (item.price * item.quantity);
   }, 0);
+  
+  // 表示用の小計（配送先国に応じて変換）
+  const subtotal = isUK 
+    ? subtotalBase  // £260
+    : subtotalBase * exchangeRate;  // $364
 
-  // 合計（サイト通貨）
-  const total = subtotal + shippingInSiteCurrency;
+  // 合計（配送先国の通貨）
+  const total = subtotal + shippingInDisplayCurrency;
+
+  // 商品価格を表示用に変換するヘルパー関数
+  const formatItemPrice = (priceInGBP: number, quantity: number) => {
+    const unitPrice = isUK ? priceInGBP : priceInGBP * exchangeRate;
+    return (unitPrice * quantity).toFixed(2);
+  };
 
   const handleRemove = (productId: string) => {
     removeFromCart(productId);
@@ -92,14 +99,14 @@ export default function CartPage() {
           })),
           country: selectedCountry,
           totalWeight: totalWeight,
-          shippingCost: shippingInSiteCurrency, // サイト通貨で送信
+          shippingCost: shippingInDisplayCurrency,
+          currency: isUK ? 'GBP' : 'USD', // 配送先国に応じた通貨
         }),
       });
 
       const data = await response.json();
 
       if (data.url) {
-        // Stripe Checkoutに遷移
         window.location.href = data.url;
       } else {
         alert('Checkout failed. Please try again.');
@@ -203,7 +210,9 @@ export default function CartPage() {
                       
                       {/* Price and Remove */}
                       <div className="flex items-center gap-6">
-                        <span className="font-serif text-lg text-[#1A1A1A]">{priceSymbol}{(item.price * item.quantity).toFixed(2)}</span>
+                        <span className="font-serif text-lg text-[#1A1A1A]">
+                          {symbol}{formatItemPrice(item.price, item.quantity)}
+                        </span>
                         <button
                           onClick={() => handleRemove(item.productId)}
                           className="text-[#1A1A1A]/70 hover:text-[#B8735A] transition-colors"
@@ -257,16 +266,16 @@ export default function CartPage() {
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between font-sans text-[#1A1A1A]">
                     <span>Subtotal</span>
-                    <span>{priceSymbol}{subtotal.toFixed(2)}</span>
+                    <span>{symbol}{subtotal.toFixed(2)}</span>
                   </div>
-                  {/* 送料：イギリスのみ£、その他は$ */}
+                  {/* 送料：配送先国の通貨で表示 */}
                   <div className="flex justify-between font-sans text-[#1A1A1A]">
                     <span>Shipping</span>
-                    <span>{shippingSymbol}{shippingDisplayCost}</span>
+                    <span>{symbol}{shippingDisplayCost}</span>
                   </div>
                   <div className="border-t border-[#1A1A1A]/10 pt-4 flex justify-between font-serif text-xl text-[#1A1A1A]">
                     <span>Total</span>
-                    <span>{priceSymbol}{total.toFixed(2)}</span>
+                    <span>{symbol}{total.toFixed(2)}</span>
                   </div>
                 </div>
                 

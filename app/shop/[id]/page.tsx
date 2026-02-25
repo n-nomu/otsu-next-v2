@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { AddToCartButton } from "@/components/AddToCartButton";
+import { useCurrency } from "@/lib/currency-context";
 
 interface Props {
   params: { id: string };
@@ -16,6 +17,11 @@ export default function ProductPage({ params }: Props) {
   const product = getProductById(params.id);
   
   const [mainImage, setMainImage] = useState<string>(product?.image || "");
+  
+  // 通貨設定を取得
+  const { currency } = useCurrency();
+  const displayPrice = currency === 'GBP' ? product?.price : (product?.price || 0) * 1.4;
+  const symbol = currency === 'GBP' ? '£' : '$';
 
   if (!product) {
     notFound();
@@ -97,7 +103,7 @@ export default function ProductPage({ params }: Props) {
                 {product.name}
               </h1>
               <p className="text-2xl font-sans font-light text-[#1A1A1A]">
-                £{product.price}
+                {symbol}{displayPrice}
               </p>
               {/* 送料メッセージ追加 */}
               <p className="text-sm text-[#1A1A1A]/60 mt-2">

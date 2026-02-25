@@ -5,31 +5,41 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: "2026-01-28.clover",
 });
 
+const exchangeRate = 1.4; // £1 = $1.4
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { items, country, totalWeight, shippingCost } = body;
+    const { items, country, totalWeight, shippingCost, currency } = body;
 
-    // 国に応じて通貨を判定（GBは£、それ以外は$）
-    const currency = country === 'GB' ? 'gbp' : 'usd';
+    // 国またはフロントエンドから送信された通貨設定に基づいて判定
+    const targetCurrency = currency === 'GBP' || country === 'GB' ? 'gbp' : 'usd';
+    const isGBP = targetCurrency === 'gbp';
 
     // line_itemsを作成（カート内の全商品＋送料）
     const lineItems = [
-      ...items.map((item: any) => ({
-        price_data: {
-          currency: currency,
-          product_data: {
-            name: item.name,
-            description: `Product ID: ${item.productId}`,
+      ...items.map((item: any) => {
+        // 基準価格は£なので、USDの場合は為替レートで変換
+        const priceInTargetCurrency = isGBP 
+          ? item.price 
+          : item.price * exchangeRate;
+          
+        return {
+          price_data: {
+            currency: targetCurrency,
+            product_data: {
+              name: item.name,
+              description: `Product ID: ${item.productId}`,
+            },
+            unit_amount: Math.round(priceInTargetCurrency * 100),
           },
-          unit_amount: Math.round(item.price * 100),
-        },
-        quantity: item.quantity,
-      })),
-      // 送料を追加
+          quantity: item.quantity,
+        };
+      }),
+      // 送料を追加（フロントエンドから送られてくるshippingCostは既に変換済み）
       {
         price_data: {
-          currency: currency,
+          currency: targetCurrency,
           product_data: {
             name: `International Shipping`,
             description: `${Math.round(totalWeight)}g to ${country}`,
