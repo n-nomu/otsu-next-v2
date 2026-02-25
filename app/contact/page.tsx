@@ -9,29 +9,38 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
-    message: ''
+    message: '',
+    privacyAgreed: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formData.privacyAgreed) {
+      alert("Please agree to the Privacy Policy to proceed.");
+      return;
+    }
+    
     setIsSubmitting(true);
     
-    // 実際のメール送信機能は後で実装
-    // 今は仮の送信成功表示
+    // コンソールログ出力（Resend実装までの仮）
+    console.log("Form submitted:", formData);
+    console.log("To: nomura41985@gmail.com");
+    
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', message: '', privacyAgreed: false });
     }, 1000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLInputElement>) => {
+    const { name, value, type } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
     });
   };
 
@@ -70,36 +79,40 @@ export default function ContactPage() {
                 <Mail className="w-5 h-5 text-[#B8735A] mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-sans text-[#1A1A1A] mb-1">Email</h3>
-                  <p className="text-[#1A1A1A]/70 text-sm">hello@otsu-london.com</p>
-                  <p className="text-[#1A1A1A]/50 text-xs mt-1">We aim to respond within 24 hours</p>
+                  <a href="mailto:nomura41985@gmail.com" className="text-[#B8735A] hover:underline text-sm">
+                    nomura41985@gmail.com
+                  </a>
+                  <p className="text-[#1A1A1A]/50 text-xs mt-1">We aim to respond within 48 hours</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <MapPin className="w-5 h-5 text-[#B8735A] mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-sans text-[#1A1A1A] mb-1">Location</h3>
-                  <p className="text-[#1A1A1A]/70 text-sm">London, United Kingdom</p>
-                  <p className="text-[#1A1A1A]/50 text-xs mt-1">By appointment only</p>
+                  <h3 className="font-sans text-[#1A1A1A] mb-1">Studio Address</h3>
+                  <p className="text-[#1A1A1A]/70 text-sm">545-20 Masuda, Higashi-ku</p>
+                  <p className="text-[#1A1A1A]/70 text-sm">Okayama City, Okayama Prefecture</p>
+                  <p className="text-[#1A1A1A]/70 text-sm">Japan 704-8141</p>
+                  <p className="text-[#1A1A1A]/50 text-xs mt-1">岡山県岡山市東区升田545-20</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
                 <Clock className="w-5 h-5 text-[#B8735A] mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-sans text-[#1A1A1A] mb-1">Response Time</h3>
-                  <p className="text-[#1A1A1A]/70 text-sm">Monday – Friday: 9am – 6pm GMT</p>
+                  <h3 className="font-sans text-[#1A1A1A] mb-1">Business Hours</h3>
+                  <p className="text-[#1A1A1A]/70 text-sm">Monday – Friday: 9:00 – 17:00 JST</p>
                   <p className="text-[#1A1A1A]/50 text-xs mt-1">Weekend inquiries may take longer</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-12 p-6 bg-white border border-[#1A1A1A]/10">
-              <h3 className="font-serif text-lg text-[#1A1A1A] mb-3">For Collectors</h3>
+              <h3 className="font-serif text-lg text-[#1A1A1A] mb-3">For Collectors & Trade</h3>
               <p className="text-[#1A1A1A]/70 text-sm leading-relaxed">
-                If you are interested in commissioning a specific piece or arranging a private 
-                viewing, please mention this in your message. We work closely with select 
-                potters in Bizen and can facilitate custom orders.
+                If you are interested in commissioning a specific piece, arranging a private 
+                viewing, or wholesale inquiries, please mention this in your message. 
+                We work closely with select potters in Bizen and can facilitate custom orders.
               </p>
             </div>
           </div>
@@ -125,7 +138,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-sans text-[#1A1A1A] mb-2">
-                    Name
+                    Name <span className="text-[#B8735A]">*</span>
                   </label>
                   <input
                     type="text"
@@ -140,7 +153,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-sans text-[#1A1A1A] mb-2">
-                    Email
+                    Email <span className="text-[#B8735A]">*</span>
                   </label>
                   <input
                     type="email"
@@ -154,29 +167,8 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-sans text-[#1A1A1A] mb-2">
-                    Subject
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-white border border-[#1A1A1A]/20 focus:border-[#1A1A1A] focus:outline-none transition-colors font-sans text-[#1A1A1A]"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="product">Product Question</option>
-                    <option value="order">Order Status</option>
-                    <option value="custom">Custom Commission</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
                   <label htmlFor="message" className="block text-sm font-sans text-[#1A1A1A] mb-2">
-                    Message
+                    Message <span className="text-[#B8735A]">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -187,6 +179,22 @@ export default function ContactPage() {
                     rows={5}
                     className="w-full px-4 py-3 bg-white border border-[#1A1A1A]/20 focus:border-[#1A1A1A] focus:outline-none transition-colors font-sans text-[#1A1A1A] resize-none"
                   />
+                </div>
+
+                {/* GDPR同意チェックボックス */}
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="privacy"
+                    name="privacyAgreed"
+                    checked={formData.privacyAgreed}
+                    onChange={handleChange}
+                    className="mt-1 w-4 h-4 border border-[#1A1A1A]/30 rounded cursor-pointer"
+                  />
+                  <label htmlFor="privacy" className="text-xs text-[#1A1A1A]/70 leading-relaxed cursor-pointer">
+                    I agree to the <Link href="/legal/privacy" className="text-[#B8735A] hover:underline">Privacy Policy</Link> and consent to having my data processed in accordance with GDPR. 
+                    My information will be used solely to respond to this inquiry and will be retained for up to 12 months.
+                  </label>
                 </div>
 
                 <button
@@ -202,7 +210,6 @@ export default function ContactPage() {
         </div>
       </main>
 
-      {/* フッター */}
       <Footer />
     </div>
   );

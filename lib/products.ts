@@ -7,9 +7,11 @@ export interface Product {
   image2?: string;
   dimensions?: string;
   soldOut?: boolean;
+  collection: "heritage" | "studio";
 }
 
 export const products: Product[] = [
+  // Heritage Collection - 高級ライン（7商品）
   {
     id: "1",
     name: "Bizen-yaki Sake Set: The Essence of Earth and Fire",
@@ -27,13 +29,15 @@ Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the arti
     image2: "/product_1_2.webp",
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
-Capacity: Approx. [ ] ml`
+Capacity: Approx. [ ] ml`,
+    collection: "heritage"
   },
   {
     id: "2",
     name: "Bizen-yaki Sake Set: Deep Tones and Flowing Ash",
     price: 260,
     description: `A Contrast of Stillness and Movement.
+
 This handcrafted set features a profound, dark clay body that evokes a sense of quietude. The surface is naturally adorned with a dramatic "Goma" (sesame seed) glaze—a golden-hued ash deposit that flows gracefully across the deep charcoal base. This striking visual is achieved through an intense firing process where red pine ash melts and vitrifies, creating a unique organic pattern.
 
 Unique Contrast: The interplay between the dark, scorched earth and the rich natural ash creates a sophisticated, modern aesthetic.
@@ -44,13 +48,15 @@ Direct Origin: Handmade in Bizen, Okayama, and shipped directly from the artisan
     image: "/product_2_1.webp",
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
-Capacity: Approx. [ ] ml`
+Capacity: Approx. [ ] ml`,
+    collection: "heritage"
   },
   {
     id: "7",
     name: "Bizen-yaki Sake Set: Silvery Ash and Earth Tones",
     price: 260,
     description: `Subtle Elegance.
+
 This set is distinguished by its refined palette of soft grey and warm russet. The upper portion of the flask features a natural "Hai-kaburi" (ash-covered) effect, where intense heat has transformed wood ash into a subtle sheen. Below, the natural reddish-brown of the Bizen clay emerges, creating a gentle gradient that reflects the unpredictable nature of the kiln.
 
 Soft Grey Surface: The unique ash deposits create a quiet, sophisticated presence that changes with the light.
@@ -62,13 +68,15 @@ Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the stud
     image2: "/product_7_2.webp",
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
-Capacity: Approx. [ ] ml`
+Capacity: Approx. [ ] ml`,
+    collection: "heritage"
   },
   {
     id: "8",
     name: "Bizen-yaki Sake Set: Earthy Texture and Deep Bronze",
     price: 380,
     description: `A Presence of Time and Fire.
+
 This three-piece set is defined by its rugged, tactile surface and deep bronze and charcoal tones. The tokkuri exhibits a coarse, organic texture—a result of the unique composition of Bizen clay reacting to the intense heat of the kiln. With two accompanying guinomi, each showing distinct firing marks, this set is designed for a shared experience of authentic Japanese craft.
 
 Textural Depth: Features a "Kase" (withered) skin with fine protrusions, offering a raw and primal grip that celebrates the clay's origin.
@@ -86,27 +94,8 @@ This pairing of two distinct "landscapes" symbolizes the harmony between two ind
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Left): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Right): Height [ ] × Width [ ] mm | Weight [ ] g
-Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`
-  },
-  {
-    id: "5",
-    name: "Bizen-yaki Tea Cup: Crimson Fire and Iron Earth",
-    price: 100,
-    description: `A Study in Duality.
-This teacup captures the dramatic essence of the kiln's flame. One side features a vibrant, scorched crimson hue—known as Hiiro—while the other transitions into a deep, matte charcoal with hints of warm bronze tones. The subtle horizontal ridges from the potter's wheel add a rhythmic texture, creating a piece that feels grounded yet full of movement.
-
-Dynamic Gradient: The stark contrast between the warm earth tones and the dark, fired surface is a natural result of the placement within the kiln.
-
-Ergonomic Simplicity: A classic cylindrical form that fits naturally in the hands, allowing the user to feel the raw, unglazed texture of Bizen clay.
-
-Direct Origin: Hand-sculpted in Okayama and shipped directly from the artisan's studio.`,
-    image: "/product_5_1.webp",
-    image2: "/product_5_2.webp",
-    dimensions: `Height [Insert H] mm
-Diameter [Insert D] mm
-Weight [Insert W] g
-Capacity: Approx. [Insert C] ml`,
-    soldOut: false
+Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`,
+    collection: "heritage"
   },
   {
     id: "9",
@@ -129,78 +118,148 @@ The pairing of two distinct "landscapes" symbolizes the harmony between two indi
     dimensions: `Cup (Left): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Cup (Right): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml each`,
-    soldOut: false
+    soldOut: false,
+    collection: "heritage"
   },
   {
     id: "10",
     name: "Bizen-yaki Cup Set: Natural Tones of the Kiln",
     price: 200,
-    description: `*Natural Tones of the Kiln.*
+    description: `Natural Tones of the Kiln.
 
 This pair of cups features a complex color palette achieved through prolonged wood-firing. The surfaces are characterized by a deep, charcoal-toned base interwoven with russet accents and a dusting of natural ash. These variations are the direct result of the unpredictable environment inside the kiln, ensuring that no two cups share the exact same aesthetic.
 
-*Color Variation:* Exhibits a gradient from dark, scorched earth to warm, iron-rich ochre.
+Color Variation: Exhibits a gradient from dark, scorched earth to warm, iron-rich ochre.
 
-*Surface Texture:* The unglazed exterior reveals a matte, granular finish with micro-specks of vitrified ash.
+Surface Texture: The unglazed exterior reveals a matte, granular finish with micro-specks of vitrified ash.
 
-*Complementary Pair:* Each cup displays distinct yet harmonious firing marks, designed to be used together or individually.
+Complementary Pair: Each cup displays distinct yet harmonious firing marks, designed to be used together or individually.
 
-*Direct Origin:* Handmade in Bizen, Okayama, and shipped directly from the artisan's studio.
+Direct Origin: Handmade in Bizen, Okayama, and shipped directly from the artisan's studio.
 
-*Ideal for Gifting*
+Ideal for Gifting
 With their complementary yet distinct colorations, this set is a popular choice for meaningful gifts.`,
     image: "/product_10_1.webp",
     image2: "/product_10_2.webp",
     dimensions: `Cup (Left): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Cup (Right): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml each`,
-    soldOut: false
+    soldOut: false,
+    collection: "heritage"
   },
   {
     id: "11",
     name: "Bizen-yaki Free Cup: Deep Iron and Scorched Earth",
     price: 200,
-    description: `*A Reflection of Intense Fire.*
+    description: `A Reflection of Intense Fire.
 
 This single free cup features a somber, deep-toned exterior resulting from high-temperature firing. The surface is dominated by iron-black and dark russet hues, with a subtle metallic sheen visible in certain areas. The unglazed finish highlights the raw, mineral-rich composition of the Bizen clay, offering a direct tactile connection to the material.
 
-*Distinct Coloration:* A profound blend of charcoal and oxidized earth tones, unique to this specific firing.
+Distinct Coloration: A profound blend of charcoal and oxidized earth tones, unique to this specific firing.
 
-*Internal Detail:* The interior reveals rhythmic, concentric ridges formed during the hand-sculpting process on the potter's wheel.
+Internal Detail: The interior reveals rhythmic, concentric ridges formed during the hand-sculpting process on the potter's wheel.
 
-*Direct Origin:* Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
+Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
     image: "/product_11_1.webp",
     image2: "/product_11_2.webp",
     dimensions: `Height: [Insert Height] mm
 Diameter: [Insert Diameter] mm
 Weight: [Insert Weight] g
 Capacity: Approx. [Insert Volume] ml`,
-    soldOut: false
+    soldOut: false,
+    collection: "heritage"
   },
+  // Sold Out Archive (Heritage)
   {
     id: "3",
     name: "Rice Bowl Set (2)",
     price: 220,
-    description: "",
+    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
     image: "/product_rice_bowls.jpg",
-    soldOut: true
+    soldOut: true,
+    collection: "heritage"
   },
   {
     id: "4",
     name: "Sake Flask — Sangiri",
     price: 195,
-    description: "",
+    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
     image: "/product_sake_flask.jpg",
-    soldOut: true
+    soldOut: true,
+    collection: "heritage"
   },
   {
     id: "6",
     name: "Small Jar — Kobizen",
     price: 310,
-    description: "",
+    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
     image: "/product_jar.jpg",
-    soldOut: true
+    soldOut: true,
+    collection: "heritage"
   },
+  // Studio Collection - 入門ライン（3商品）
+  {
+    id: "5",
+    name: "Bizen-yaki Tea Cup: Crimson Fire and Iron Earth",
+    price: 100,
+    description: `A Study in Duality.
+
+This teacup captures the dramatic essence of the kiln's flame. One side features a vibrant, scorched crimson hue—known as Hiiro—while the other transitions into a deep, matte charcoal with hints of warm bronze tones. The subtle horizontal ridges from the potter's wheel add a rhythmic texture, creating a piece that feels grounded yet full of movement.
+
+Dynamic Gradient: The stark contrast between the warm earth tones and the dark, fired surface is a natural result of the placement within the kiln.
+
+Ergonomic Simplicity: A classic cylindrical form that fits naturally in the hands, allowing the user to feel the raw, unglazed texture of Bizen clay.
+
+Direct Origin: Hand-sculpted in Okayama and shipped directly from the artisan's studio.`,
+    image: "/product_5_1.webp",
+    image2: "/product_5_2.webp",
+    dimensions: `Height [ ] mm
+Diameter [ ] mm
+Weight [ ] g
+Capacity: Approx. [ ] ml`,
+    soldOut: false,
+    collection: "studio"
+  },
+  {
+    id: "12",
+    name: "Bizen-yaki Plate: Natural Canvas",
+    price: 75,
+    description: `A Foundation for Daily Rituals.
+
+This shallow plate showcases the warm, earthy tones of Bizen clay in its most honest form. The surface bears gentle marks from the potter's wheel and subtle variations from the kiln firing, creating a unique landscape on each piece.
+
+Versatile Form: Perfect for serving appetizers, pastries, or as a catch-all for daily essentials.
+
+Warm Palette: Natural russet and sand tones that complement both contemporary and traditional table settings.
+
+Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
+    image:"/product_plate.jpg",
+    
+    dimensions: `Diameter [ ] mm | Height [ ] mm | Weight [ ] g`,
+    soldOut: false,
+    collection: "studio"
+  },
+  {
+    id: "13",
+    name: "Bizen-yaki Tea Bowl: Warm Geometry",
+    price: 85,
+    description: `Lines Drawn by Fire.
+
+This compact tea bowl features distinctive geometric patterns created by the natural interaction of clay and flame. The exterior shows striking lines of scarlet against the warm clay body—a signature effect of Bizen firing where iron-rich clay meets intense heat.
+
+Geometric Beauty: Bold, linear patterns that add visual interest to the traditional form.
+
+Comfortable Hold: Sized perfectly for cradling in both hands, ideal for morning tea or meditation practice.
+
+Living Surface: The unglazed texture will develop a subtle sheen and deepen in color with each use.
+
+Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
+    image:"/product_tea_bowl.jpg" ,
+    
+    dimensions: `Diameter [ ] mm | Height [ ] mm | Capacity [ ] ml | Weight [ ] g`,
+    soldOut: false,
+    collection: "studio"
+  }
 ];
 
 export const getProductById = (id: string): Product | undefined => {

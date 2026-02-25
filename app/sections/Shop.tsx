@@ -4,11 +4,13 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { products } from '@/lib/products';
+import { useCurrency } from '@/lib/currency-context';
 
 function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const { formatPrice } = useCurrency();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -82,7 +84,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
             </p>
           ) : (
             <p className="font-sans text-lg font-medium text-terracotta">
-              £{product.price}
+              {formatPrice(product.price)}
             </p>
           )}
         </div>
@@ -93,6 +95,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
 
 export function Shop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeTab, setActiveTab] = useState<"all" | "heritage" | "studio">("all");
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -112,6 +115,12 @@ export function Shop() {
 
     return () => observer.disconnect();
   }, []);
+
+  // タブによるフィルタリング
+  const filteredProducts = products.filter((product) => {
+    if (activeTab === "all") return true;
+    return product.collection === activeTab;
+  });
 
   return (
     <section
@@ -133,9 +142,47 @@ export function Shop() {
           </button>
         </div>
 
+        {/* Collection Tabs */}
+        <div
+          className={`flex justify-center gap-2 md:gap-4 mb-12 flex-wrap transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          <button
+            onClick={() => setActiveTab("all")}
+            className={`px-6 py-3 text-sm tracking-wider transition-all duration-300 ${
+              activeTab === "all"
+                ? "bg-[#1A1A1A] text-[#F5F3EF]"
+                : "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal"
+            }`}
+          >
+            All
+          </button>
+          <button
+            onClick={() => setActiveTab("heritage")}
+            className={`px-6 py-3 text-sm tracking-wider transition-all duration-300 ${
+              activeTab === "heritage"
+                ? "bg-[#1A1A1A] text-[#F5F3EF]"
+                : "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal"
+            }`}
+          >
+            Heritage Collection
+          </button>
+          <button
+            onClick={() => setActiveTab("studio")}
+            className={`px-6 py-3 text-sm tracking-wider transition-all duration-300 ${
+              activeTab === "studio"
+                ? "bg-[#1A1A1A] text-[#F5F3EF]"
+                : "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal"
+            }`}
+          >
+            Studio Collection
+          </button>
+        </div>
+
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {products.map((product, index) => (
+          {filteredProducts.map((product, index) => (
             <ProductCard key={product.id} product={product} index={index} />
           ))}
         </div>

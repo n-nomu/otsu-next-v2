@@ -6,12 +6,14 @@ import { ShoppingBag, Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { getCartCount } from '@/lib/cart';
 import { usePathname } from 'next/navigation';
+import { useCurrency } from '@/lib/currency-context';
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const pathname = usePathname();
+  const { currency, toggleCurrency } = useCurrency();
 
   // トップページかどうかを判定
   const isHomePage = pathname === '/';
@@ -111,6 +113,14 @@ export function Header() {
 
           {/* Right Side */}
           <div className="flex items-center gap-4 lg:gap-6">
+            {/* Currency Toggle - Desktop */}
+            <button
+              onClick={toggleCurrency}
+              className={`hidden lg:block font-sans text-xs transition-colors duration-300 hover:opacity-70 ${getTextColor()}`}
+            >
+              {currency === 'GBP' ? '£ GBP' : '$ USD'}
+            </button>
+
             {/* Language Switcher - Desktop */}
             <span
               className={`hidden lg:block font-sans text-xs transition-colors duration-500 ${getMutedTextColor()}`}
@@ -179,6 +189,15 @@ export function Header() {
                   </nav>
                   <div className="mt-auto pb-8">
                     <div className="flex items-center gap-4 text-sm text-[#1A1A1A]/70">
+                      <button 
+                        onClick={() => {
+                          toggleCurrency();
+                          closeMobileMenu();
+                        }}
+                        className="text-[#1A1A1A] hover:text-[#B8735A] transition-colors"
+                      >
+                        {currency === 'GBP' ? '£ GBP' : '$ USD'}
+                      </button>
                       <span>EN / JP</span>
                       <Link 
                         href="/contact"
