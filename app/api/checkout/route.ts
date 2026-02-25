@@ -8,29 +8,50 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { items } = body; // 複数商品を受け取る
+    const { items, country, totalWeight, shippingCost } = body;
 
-    // line_itemsを作成（カート内の全商品）
-    const lineItems = items.map((item: any) => ({
-      price_data: {
-        currency: "gbp",
-        product_data: {
-          name: item.name,
-          description: `Product ID: ${item.productId}`,
+    // 国に応じて通貨を判定（GBは£、それ以外は$）
+    const currency = country === 'GB' ? 'gbp' : 'usd';
+
+    // line_itemsを作成（カート内の全商品＋送料）
+    const lineItems = [
+      ...items.map((item: any) => ({
+        price_data: {
+          currency: currency,
+          product_data: {
+            name: item.name,
+            description: `Product ID: ${item.productId}`,
+          },
+          unit_amount: Math.round(item.price * 100),
         },
-        unit_amount: Math.round(item.price * 100), // pence単位
+        quantity: item.quantity,
+      })),
+      // 送料を追加
+      {
+        price_data: {
+          currency: currency,
+          product_data: {
+            name: `International Shipping`,
+            description: `${Math.round(totalWeight)}g to ${country}`,
+          },
+          unit_amount: Math.round(shippingCost * 100),
+        },
+        quantity: 1,
       },
-      quantity: item.quantity,
-    }));
+    ];
 
     // Stripe Checkout Sessionを作成
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      line_items: lineItems, // 複数商品
+      line_items: lineItems,
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/success`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/cancel`,
       locale: 'en',
+      metadata: {
+        country: country,
+        totalWeight: `${totalWeight}g`,
+      },
     });
 
     return NextResponse.json({ url: session.url });

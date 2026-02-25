@@ -99,6 +99,10 @@ export default function ProductPage({ params }: Props) {
               <p className="text-2xl font-sans font-light text-[#1A1A1A]">
                 £{product.price}
               </p>
+              {/* 送料メッセージ追加 */}
+              <p className="text-sm text-[#1A1A1A]/60 mt-2">
+                International shipping calculated at checkout
+              </p>
             </div>
 
             <div className="prose prose-stone">
@@ -117,37 +121,34 @@ export default function ProductPage({ params }: Props) {
               </p>
             </div>
 
-            {/* 在庫状況（Sold Out対応） */}
-            <div>
+            {/* 在庫状況とカートボタン */}
+            <div className="space-y-4">
               {product.soldOut ? (
-                <span className="text-gray-500 text-sm font-medium">
-                  ● Sold Out
-                </span>
+                <>
+                  <span className="text-gray-500 text-sm font-medium">
+                    ● Sold Out
+                  </span>
+                  <button
+                    disabled
+                    className="w-full px-8 py-4 bg-gray-300 text-white font-medium cursor-not-allowed"
+                  >
+                    Sold Out — Unavailable
+                  </button>
+                </>
               ) : (
-                <span className="text-green-700 text-sm font-medium">
-                  ● In Stock
-                </span>
+                <>
+                  <span className="text-green-700 text-sm font-medium">
+                    ● In Stock
+                  </span>
+                  <AddToCartButton 
+                    productId={product.id}
+                    productName={product.name}
+                    price={product.price}
+                    image={product.image}
+                  />
+                </>
               )}
             </div>
-
-            {/* カートボタンまたはSold Out表示 */}
-            {product.soldOut ? (
-              <button
-                disabled
-                className="w-full px-8 py-4 bg-gray-300 text-white font-medium cursor-not-allowed"
-              >
-                Sold Out — Unavailable
-              </button>
-            ) : (
-              <div className="flex flex-col sm:flex-row gap-4">
-                <AddToCartButton 
-                  productId={product.id}
-                  productName={product.name}
-                  price={product.price}
-                  image={product.image}
-                />
-              </div>
-            )}
           </div>
         </div>
       </main>

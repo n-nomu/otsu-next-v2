@@ -4,18 +4,59 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Footer } from '@/components/Footer';
-import { getCart, CartItem, removeFromCart, updateQuantity, getCartTotal, clearCart } from '@/lib/cart';
+import { getCart, CartItem, removeFromCart, updateQuantity, clearCart } from '@/lib/cart';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
+import { calculateShipping, COUNTRIES, CountryCode } from '@/lib/shipping';
+import { useCurrency } from '@/lib/currency-context';
+import { products } from '@/lib/products';
 
 export default function CartPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState<CountryCode>('GB');
+  const { currency } = useCurrency();
 
   useEffect(() => {
     setCart(getCart());
     setIsLoading(false);
   }, []);
+
+  // 総重量計算（グラム）
+  const totalWeight = cart.reduce((sum, item) => {
+    const product = products.find(p => p.id === item.productId);
+    return sum + (product?.weight || 500) * item.quantity;
+  }, 0);
+
+  // 送料計算（USDベース）
+  const shippingCostUSD = calculateShipping(selectedCountry, totalWeight);
+  
+  // 為替レート（£1 = $1.4）
+  const exchangeRate = 1.4;
+
+  // 通貨記号の決定
+  // 商品価格・合計はサイトの通貨設定に従う
+  const priceSymbol = currency === 'GBP' ? '£' : '$';
+  
+  // 送料のみ配送先国に応じて変更（イギリスのみ£、その他は$）
+  const isUK = selectedCountry === 'GB';
+  const shippingSymbol = isUK ? '£' : '$';
+  const shippingDisplayCost = isUK 
+    ? (shippingCostUSD / exchangeRate).toFixed(2)  // USD→GBP
+    : shippingCostUSD.toFixed(2);
+
+  // サイト通貨での送料（合計計算用）
+  const shippingInSiteCurrency = currency === 'GBP' 
+    ? shippingCostUSD / exchangeRate 
+    : shippingCostUSD;
+
+  // 小計（サイト通貨）
+  const subtotal = cart.reduce((sum, item) => {
+    return sum + (item.price * item.quantity);
+  }, 0);
+
+  // 合計（サイト通貨）
+  const total = subtotal + shippingInSiteCurrency;
 
   const handleRemove = (productId: string) => {
     removeFromCart(productId);
@@ -49,6 +90,9 @@ export default function CartPage() {
             price: item.price,
             quantity: item.quantity,
           })),
+          country: selectedCountry,
+          totalWeight: totalWeight,
+          shippingCost: shippingInSiteCurrency, // サイト通貨で送信
         }),
       });
 
@@ -67,10 +111,6 @@ export default function CartPage() {
       setIsCheckingOut(false);
     }
   };
-
-  const subtotal = getCartTotal();
-  const shipping = subtotal >= 500 ? 0 : 15; // £500以上で送料無料
-  const total = subtotal + shipping;
 
   // シンプルなヘッダーコンポーネント（ロゴのみ・左寄せ・墨黒）
   const SimpleHeader = () => (
@@ -163,7 +203,7 @@ export default function CartPage() {
                       
                       {/* Price and Remove */}
                       <div className="flex items-center gap-6">
-                        <span className="font-serif text-lg text-[#1A1A1A]">£{(item.price * item.quantity).toFixed(2)}</span>
+                        <span className="font-serif text-lg text-[#1A1A1A]">{priceSymbol}{(item.price * item.quantity).toFixed(2)}</span>
                         <button
                           onClick={() => handleRemove(item.productId)}
                           className="text-[#1A1A1A]/70 hover:text-[#B8735A] transition-colors"
@@ -193,23 +233,40 @@ export default function CartPage() {
               <div className="bg-white border border-[#1A1A1A]/10 p-6 sticky top-32">
                 <h2 className="font-serif text-2xl text-[#1A1A1A] mb-6">Order Summary</h2>
                 
+                {/* Shipping Destination */}
+                <div className="mb-6">
+                  <label className="block font-sans text-sm text-[#1A1A1A] mb-2">
+                    Shipping Destination
+                  </label>
+                  <select 
+                    value={selectedCountry}
+                    onChange={(e) => setSelectedCountry(e.target.value as CountryCode)}
+                    className="w-full p-3 border border-[#1A1A1A]/20 bg-[#F5F3EF] text-[#1A1A1A] text-sm font-sans focus:outline-none focus:border-[#1A1A1A]"
+                  >
+                    {COUNTRIES.map(country => (
+                      <option key={country.code} value={country.code}>
+                        {country.name}
+                      </option>
+                    ))}
+                  </select>
+                  <p className="font-sans text-xs text-[#1A1A1A]/50 mt-1">
+                    Total weight: {Math.round(totalWeight)}g
+                  </p>
+                </div>
+
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between font-sans text-[#1A1A1A]">
                     <span>Subtotal</span>
-                    <span>£{subtotal.toFixed(2)}</span>
+                    <span>{priceSymbol}{subtotal.toFixed(2)}</span>
                   </div>
+                  {/* 送料：イギリスのみ£、その他は$ */}
                   <div className="flex justify-between font-sans text-[#1A1A1A]">
                     <span>Shipping</span>
-                    <span>{shipping === 0 ? 'Free' : `£${shipping.toFixed(2)}`}</span>
+                    <span>{shippingSymbol}{shippingDisplayCost}</span>
                   </div>
-                  {shipping > 0 && (
-                    <p className="font-sans text-xs text-[#1A1A1A]/70">
-                      Free shipping on orders over £500
-                    </p>
-                  )}
                   <div className="border-t border-[#1A1A1A]/10 pt-4 flex justify-between font-serif text-xl text-[#1A1A1A]">
                     <span>Total</span>
-                    <span>£{total.toFixed(2)}</span>
+                    <span>{priceSymbol}{total.toFixed(2)}</span>
                   </div>
                 </div>
                 

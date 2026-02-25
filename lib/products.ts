@@ -8,6 +8,7 @@ export interface Product {
   dimensions?: string;
   soldOut?: boolean;
   collection: "heritage" | "studio";
+  weight: number; // ← 追加（グラム単位）
 }
 
 export const products: Product[] = [
@@ -30,7 +31,8 @@ Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the arti
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml`,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 800 // ← 追加
   },
   {
     id: "2",
@@ -49,7 +51,8 @@ Direct Origin: Handmade in Bizen, Okayama, and shipped directly from the artisan
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml`,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 800 // ← 追加
   },
   {
     id: "7",
@@ -69,7 +72,8 @@ Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the stud
     dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml`,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 800 // ← 追加
   },
   {
     id: "8",
@@ -95,7 +99,8 @@ This pairing of two distinct "landscapes" symbolizes the harmony between two ind
 Guinomi (Left): Height [ ] × Width [ ] mm | Weight [ ] g
 Guinomi (Right): Height [ ] × Width [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 800 // ← 追加
   },
   {
     id: "9",
@@ -119,7 +124,8 @@ The pairing of two distinct "landscapes" symbolizes the harmony between two indi
 Cup (Right): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml each`,
     soldOut: false,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 400 // ← 追加
   },
   {
     id: "10",
@@ -145,7 +151,8 @@ With their complementary yet distinct colorations, this set is a popular choice 
 Cup (Right): Height [ ] × Diameter [ ] mm | Weight [ ] g
 Capacity: Approx. [ ] ml each`,
     soldOut: false,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 400 // ← 追加
   },
   {
     id: "11",
@@ -167,7 +174,8 @@ Diameter: [Insert Diameter] mm
 Weight: [Insert Weight] g
 Capacity: Approx. [Insert Volume] ml`,
     soldOut: false,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 400 // ← 追加
   },
   // Sold Out Archive (Heritage)
   {
@@ -177,7 +185,8 @@ Capacity: Approx. [Insert Volume] ml`,
     description: "Currently unavailable. Join our newsletter to be notified of restocks.",
     image: "/product_rice_bowls.jpg",
     soldOut: true,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 500 // ← 追加
   },
   {
     id: "4",
@@ -186,7 +195,8 @@ Capacity: Approx. [Insert Volume] ml`,
     description: "Currently unavailable. Join our newsletter to be notified of restocks.",
     image: "/product_sake_flask.jpg",
     soldOut: true,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 500 // ← 追加
   },
   {
     id: "6",
@@ -195,7 +205,8 @@ Capacity: Approx. [Insert Volume] ml`,
     description: "Currently unavailable. Join our newsletter to be notified of restocks.",
     image: "/product_jar.jpg",
     soldOut: true,
-    collection: "heritage"
+    collection: "heritage",
+    weight: 500 // ← 追加
   },
   // Studio Collection - 入門ライン（3商品）
   {
@@ -218,7 +229,8 @@ Diameter [ ] mm
 Weight [ ] g
 Capacity: Approx. [ ] ml`,
     soldOut: false,
-    collection: "studio"
+    collection: "studio",
+    weight: 400 // ← 追加
   },
   {
     id: "12",
@@ -233,11 +245,11 @@ Versatile Form: Perfect for serving appetizers, pastries, or as a catch-all for 
 Warm Palette: Natural russet and sand tones that complement both contemporary and traditional table settings.
 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
-    image:"/product_plate.jpg",
-    
+    image: "/product_plate.jpg",
     dimensions: `Diameter [ ] mm | Height [ ] mm | Weight [ ] g`,
     soldOut: false,
-    collection: "studio"
+    collection: "studio",
+    weight: 400 // ← 追加
   },
   {
     id: "13",
@@ -254,11 +266,11 @@ Comfortable Hold: Sized perfectly for cradling in both hands, ideal for morning 
 Living Surface: The unglazed texture will develop a subtle sheen and deepen in color with each use.
 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
-    image:"/product_tea_bowl.jpg" ,
-    
+    image: "/product_tea_bowl.jpg",
     dimensions: `Diameter [ ] mm | Height [ ] mm | Capacity [ ] ml | Weight [ ] g`,
     soldOut: false,
-    collection: "studio"
+    collection: "studio",
+    weight: 400 // ← 追加
   }
 ];
 
