@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer';
 import { getCart, CartItem, removeFromCart, updateQuantity, clearCart } from '@/lib/cart';
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
 import { calculateShipping, COUNTRIES, CountryCode } from '@/lib/shipping';
+import { useCurrency } from '@/lib/currency-context';
 import { products } from '@/lib/products';
 
 export default function CartPage() {
@@ -14,11 +15,21 @@ export default function CartPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<CountryCode>('GB');
+  const { currency } = useCurrency();
 
   useEffect(() => {
     setCart(getCart());
     setIsLoading(false);
   }, []);
+
+  // ヘッダーの通貨選択に応じて、Shipping Destinationのデフォルトを変更
+  useEffect(() => {
+    if (currency === 'GBP') {
+      setSelectedCountry('GB'); // ポンドなら英国
+    } else {
+      setSelectedCountry('US'); // ドルなら米国（または他のドル圏国）
+    }
+  }, [currency]);
 
   // 為替レート（£1 = $1.4）
   const exchangeRate = 1.4;
@@ -38,7 +49,7 @@ export default function CartPage() {
   
   // 送料の表示（配送先国の通貨で）
   const shippingDisplayCost = isUK 
-    ? (shippingCostUSD / exchangeRate).toFixed(2)  // USD→GBP
+    ? (shippingCostUSD / exchangeRate).toFixed(2)
     : shippingCostUSD.toFixed(2);
 
   // 送料（合計計算用）
@@ -100,7 +111,7 @@ export default function CartPage() {
           country: selectedCountry,
           totalWeight: totalWeight,
           shippingCost: shippingInDisplayCurrency,
-          currency: isUK ? 'GBP' : 'USD', // 配送先国に応じた通貨
+          currency: isUK ? 'GBP' : 'USD',
         }),
       });
 
@@ -119,7 +130,7 @@ export default function CartPage() {
     }
   };
 
-  // シンプルなヘッダーコンポーネント（ロゴのみ・左寄せ・墨黒）
+  // シンプルなヘッダーコンポーネント
   const SimpleHeader = () => (
     <header className="w-full py-6 px-8 bg-[#F5F3EF]">
       <div className="max-w-7xl mx-auto">
@@ -175,7 +186,6 @@ export default function CartPage() {
             <div className="lg:col-span-2 space-y-6">
               {cart.map((item) => (
                 <div key={item.productId} className="flex gap-6 p-6 bg-white border border-[#1A1A1A]/10">
-                  {/* Product Image */}
                   <div className="relative w-24 h-24 flex-shrink-0 bg-[#1A1A1A]/5">
                     <Image
                       src={item.image}
@@ -185,13 +195,11 @@ export default function CartPage() {
                     />
                   </div>
                   
-                  {/* Product Info */}
                   <div className="flex-grow">
                     <h3 className="font-serif text-lg text-[#1A1A1A] mb-1">{item.name}</h3>
                     <p className="font-sans text-[#1A1A1A]/70 text-sm mb-4">Product ID: {item.productId}</p>
                     
                     <div className="flex items-center justify-between">
-                      {/* Quantity Controls */}
                       <div className="flex items-center gap-3">
                         <button
                           onClick={() => handleUpdateQuantity(item.productId, item.quantity - 1)}
@@ -208,7 +216,6 @@ export default function CartPage() {
                         </button>
                       </div>
                       
-                      {/* Price and Remove */}
                       <div className="flex items-center gap-6">
                         <span className="font-serif text-lg text-[#1A1A1A]">
                           {symbol}{formatItemPrice(item.price, item.quantity)}
@@ -225,7 +232,6 @@ export default function CartPage() {
                 </div>
               ))}
               
-              {/* Clear Cart */}
               <button
                 onClick={() => {
                   clearCart();
@@ -268,7 +274,6 @@ export default function CartPage() {
                     <span>Subtotal</span>
                     <span>{symbol}{subtotal.toFixed(2)}</span>
                   </div>
-                  {/* 送料：配送先国の通貨で表示 */}
                   <div className="flex justify-between font-sans text-[#1A1A1A]">
                     <span>Shipping</span>
                     <span>{symbol}{shippingDisplayCost}</span>
