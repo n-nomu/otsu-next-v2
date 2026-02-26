@@ -28,11 +28,11 @@ Natural Texture: The unglazed, iron-rich surface offers a tactile experience tha
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
     image: "/product_1_1.webp",
     image2: "/product_1_2.webp",
-    dimensions: `Tokkuri (Flask): 100(W) × 30(φ) × 120(H) mm | Weight [ ] g
-Guinomi (Cup): 55(W) × 55(φ) × 35(H) mm | Weight [ ] g
-Capacity: Approx. [ ] ml`,
+    dimensions: `Tokkuri (Flask): 100(W) × 30(φ) × 120(H) mm | Weight 300 g | Capacity 420 ml
+Guinomi (Cup): 55(W) × 55(φ) × 35(H) mm | Weight 50 g | Capacity 40 ml
+Total Set Weight: 350 g`,
     collection: "sake",
-    weight: 800
+    weight: 350
   },
   {
     id: "2",
@@ -48,11 +48,11 @@ Timeless Texture: The unglazed surface retains a refined yet earthy feel, design
 
 Direct Origin: Handmade in Bizen, Okayama, and shipped directly from the artisan's studio to preserve its story.`,
     image: "/product_2_1.webp",
-    dimensions: `Tokkuri (Flask): 95(W) × 30(φ) × 140(H) mm | Weight [ ] g
-Guinomi (Cup): 55(W) × 55(φ) × 40(H) mm | Weight [ ] g
-Capacity: Approx. [ ] ml`,
+    dimensions: `Tokkuri (Flask): 95(W) × 30(φ) × 140(H) mm | Weight 300 g | Capacity 410 ml
+Guinomi (Cup): 55(W) × 55(φ) × 40(H) mm | Weight 60 g | Capacity 55 ml
+Total Set Weight: 360 g`,
     collection: "sake",
-    weight: 800
+    weight: 360
   },
   {
     id: "7",
@@ -69,11 +69,11 @@ Balanced Form: A slender, elegant silhouette that showcases the natural texture 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the studio.`,
     image: "/product_7_1.webp",
     image2: "/product_7_2.webp",
-    dimensions: `Tokkuri (Flask): 80(W) × 35(φ) × 115(H) mm | Weight [ ] g
-Guinomi (Cup): 60(W) × 60(φ) × 35(H) mm | Weight [ ] g
-Capacity: Approx. [ ] ml`,
+    dimensions: `Tokkuri (Flask): 80(W) × 35(φ) × 115(H) mm | Weight 250 g | Capacity 230 ml
+Guinomi (Cup): 60(W) × 60(φ) × 35(H) mm | Weight 60 g | Capacity 35 ml
+Total Set Weight: 310 g`,
     collection: "sake",
-    weight: 800
+    weight: 310
   },
   {
     id: "8",
@@ -95,12 +95,12 @@ A Meaningful Gift
 This pairing of two distinct "landscapes" symbolizes the harmony between two individuals—ideal for commemorating a bond, a shared journey, or special celebrations.`,
     image: "/product_8_1.webp",
     image2: "/product_8_2.webp",
-    dimensions: `Tokkuri (Flask): 85(W) × 35(φ) × 115(H) mm | Weight [ ] g
-Guinomi (Left): 70(W) × 70(φ) × 50(H) mm | Weight [ ] g
-Guinomi (Right): 75(W) × 75(φ) × 45(H) mm | Weight [ ] g
-Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`,
+    dimensions: `Tokkuri (Flask): 85(W) × 35(φ) × 115(H) mm | Weight 200 g | Capacity 320 ml
+Guinomi (Left): 70(W) × 70(φ) × 50(H) mm | Weight 110 g | Capacity 100 ml
+Guinomi (Right): 75(W) × 75(φ) × 45(H) mm | Weight 110 g | Capacity 100 ml
+Total Set Weight: 420 g`,
     collection: "sake",
-    weight: 800
+    weight: 420
   },
   {
     id: "13",
@@ -118,7 +118,7 @@ Living Surface: The unglazed texture will develop a subtle sheen and deepen in c
 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
     image: "/product_tea_bowl.jpg",
-    dimensions: `Diameter [ ] mm | Height [ ] mm | Capacity [ ] ml | Weight [ ] g`,
+    dimensions: `Dimensions will be measured and added shortly.`,
     soldOut: false,
     collection: "sake",
     weight: 400
@@ -140,11 +140,10 @@ Ergonomic Simplicity: A classic cylindrical form that fits naturally in the hand
 Direct Origin: Hand-sculpted in Okayama and shipped directly from the artisan's studio.`,
     image: "/product_5_1.webp",
     image2: "/product_5_2.webp",
-    dimensions: `70(W) × 70(φ) × 80(H) mm | Weight [ ] g
-Capacity: Approx. [ ] ml`,
+    dimensions: `70(W) × 70(φ) × 80(H) mm | Weight 190 g | Capacity 240 ml`,
     soldOut: false,
     collection: "tea",
-    weight: 400
+    weight: 190
   },
   {
     id: "9",
@@ -164,12 +163,12 @@ A Meaningful Gift
 The pairing of two distinct "landscapes" symbolizes the harmony between two individuals—ideal for commemorating a bond, a shared journey, or special celebrations.`,
     image: "/product_9_2.webp",
     image2: "/product_9_1.webp",
-    dimensions: `Left Cup: 65(W) × 85(φ) × 110(H) mm | Weight [ ] g
-Right Cup: 65(W) × 90(φ) × 115(H) mm | Weight [ ] g
-Capacity: Approx. [ ] ml each`,
+    dimensions: `Left Cup: 65(W) × 85(φ) × 110(H) mm | Weight 300 g | Capacity 290 ml
+Right Cup: 65(W) × 90(φ) × 115(H) mm | Weight 320 g | Capacity 310 ml
+Total Set Weight: 620 g`,
     soldOut: false,
     collection: "tea",
-    weight: 400
+    weight: 620
   },
   {
     id: "10",
@@ -191,12 +190,12 @@ Ideal for Gifting
 With their complementary yet distinct colorations, this set is a popular choice for meaningful gifts.`,
     image: "/product_10_1.webp",
     image2: "/product_10_2.webp",
-    dimensions: `Left Cup: 70(W) × 70(φ) × 115(H) mm | Weight [ ] g
-Right Cup: 70(W) × 70(φ) × 115(H) mm | Weight [ ] g
-Capacity: Approx. [ ] ml each`,
+    dimensions: `Left Cup: 70(W) × 70(φ) × 115(H) mm | Weight 210 g | Capacity 310 ml
+Right Cup: 70(W) × 70(φ) × 115(H) mm | Weight 220 g | Capacity 310 ml
+Total Set Weight: 430 g`,
     soldOut: false,
     collection: "tea",
-    weight: 400
+    weight: 430
   },
   {
     id: "11",
@@ -213,11 +212,10 @@ Internal Detail: The interior reveals rhythmic, concentric ridges formed during 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
     image: "/product_11_1.webp",
     image2: "/product_11_2.webp",
-    dimensions: `75(W) × 75(φ) × 120(H) mm | Weight [ ] g
-Capacity: Approx. [ ] ml`,
+    dimensions: `75(W) × 75(φ) × 120(H) mm | Weight 220 g | Capacity 300 ml`,
     soldOut: false,
     collection: "tea",
-    weight: 400
+    weight: 220
   },
   
   // Plates - 皿（1商品）
@@ -235,7 +233,7 @@ Warm Palette: Natural russet and sand tones that complement both contemporary an
 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
     image: "/product_plate.jpg",
-    dimensions: `Diameter [ ] mm | Height [ ] mm | Weight [ ] g`,
+    dimensions: `Dimensions will be measured and added shortly.`,
     soldOut: false,
     collection: "plates",
     weight: 400
