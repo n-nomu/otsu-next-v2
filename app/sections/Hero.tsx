@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, X } from 'lucide-react';
 
 const heroImages = [
   '/hero_slider_bowl.jpg',
@@ -12,6 +12,7 @@ const heroImages = [
 export function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -55,6 +56,26 @@ export function Hero() {
       {/* FIXED Centered Content (appears on ALL slides) */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6">
         <div className="max-w-4xl">
+          
+          {/* === SOFT LAUNCH BANNER: 本格ローンチ時にこのブロックを削除 === */}
+          {showBanner && (
+            <div className="relative inline-block mb-8 px-8 py-3 bg-[#1A1A1A]/90 border-b-2 border-[#B8735A] rounded-sm animate-fade-in">
+              <p className="font-serif text-sm md:text-base text-[#F5F3EF] tracking-wide">
+                Preview Site — <span className="text-[#B8735A]">Soft Launch</span>
+                <span className="mx-2 opacity-50">|</span>
+                Order function coming soon
+              </p>
+              <button 
+                onClick={() => setShowBanner(false)}
+                className="absolute -right-2 -top-2 w-6 h-6 flex items-center justify-center text-[#F5F3EF]/60 hover:text-[#F5F3EF] transition-colors"
+                aria-label="Close banner"
+              >
+                <X size={16} />
+              </button>
+            </div>
+          )}
+          {/* === SOFT LAUNCH BANNER END === */}
+
           {/* Primary Headline */}
           <h1
             className={`font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white leading-[0.95] tracking-tight mb-6 drop-shadow-lg transition-all duration-1000 ${
