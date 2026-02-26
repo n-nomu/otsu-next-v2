@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { CookieBanner } from "@/components/CookieBanner";
 import { CurrencyProvider } from "@/lib/currency-context";
+import Script from "next/script";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -55,6 +56,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script 
+          src="https://www.googletagmanager.com/gtag/js?id=G-B7T18E1YDX"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-B7T18E1YDX');
+          `}
+        </Script>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
