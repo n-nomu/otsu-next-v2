@@ -25,15 +25,14 @@ export default function TermsOfService() {
               1. About 乙 otsu
             </h2>
             <p className="text-warm-gray leading-relaxed mb-4">
-              乙 otsu is a London-based gallery specialising in Bizen ware (Bizen-yaki), 
+              乙 otsu is a gallery specialising in Bizen ware (Bizen-yaki), 
               traditional Japanese ceramics from Okayama Prefecture. Each piece is handcrafted 
               by artisans and fired in wood-burning climbing kilns (noborigama) for 14 days.
             </p>
             <p className="text-warm-gray leading-relaxed">
-              <strong>Company:</strong> 乙 otsu Ltd.<br />
-              <strong>Address:</strong> [Your London Address]<br />
-              <strong>Email:</strong> hello@otsu.shop<br />
-              <strong>Company Registration:</strong> [UK Company Number]
+              <strong>Company:</strong> 乙 otsu<br />
+              <strong>Address:</strong> 545-20 Masuda, Higashi-ku, Okayama-shi, Okayama-ken, Japan<br />
+              <strong>Email:</strong> nomura41985@gmail.com
             </p>
           </section>
 
@@ -81,10 +80,9 @@ export default function TermsOfService() {
             </h2>
             <p className="text-warm-gray leading-relaxed mb-4">
               <strong>Processing Time:</strong> Orders are processed within 1-2 business days.<br />
-              <strong>Delivery:</strong> We ship from London via Royal Mail or DHL.<br />
-              <strong>UK:</strong> 3-5 business days<br />
-              <strong>Europe:</strong> 5-10 business days<br />
-              <strong>USA & Others:</strong> 7-14 business days
+              <strong>Delivery:</strong> We ship from Okayama, Japan via Japan Post or DHL.<br />
+              <strong>Worldwide:</strong> 7-14 business days (varies by destination and customs clearance)<br />
+              <em>Exact delivery estimates will be provided via email after order confirmation.</em>
             </p>
             <p className="text-warm-gray leading-relaxed">
               <strong>Packaging:</strong> Items are carefully packed with protective materials suitable 
@@ -114,8 +112,8 @@ export default function TermsOfService() {
               6. Intellectual Property
             </h2>
             <p className="text-warm-gray leading-relaxed">
-              All content on this website (images, text, logos) is the property of 乙 otsu Ltd. 
-              and protected by UK and international copyright laws. You may not reproduce, 
+              All content on this website (images, text, logos) is the property of 乙 otsu 
+              and protected by international copyright laws. You may not reproduce, 
               distribute, or use our content without written permission.
             </p>
           </section>
@@ -133,17 +131,7 @@ export default function TermsOfService() {
 
           <section className="mb-8">
             <h2 className="text-xl font-sans font-medium text-charcoal mb-4">
-              8. Governing Law
-            </h2>
-            <p className="text-warm-gray leading-relaxed">
-              These terms are governed by the laws of England and Wales. Any disputes shall 
-              be resolved in the courts of London, UK.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-xl font-sans font-medium text-charcoal mb-4">
-              9. Changes to Terms
+              8. Changes to Terms
             </h2>
             <p className="text-warm-gray leading-relaxed">
               We may update these terms occasionally. Changes are effective immediately upon 
@@ -153,11 +141,11 @@ export default function TermsOfService() {
 
           <section className="mb-8">
             <h2 className="text-xl font-sans font-medium text-charcoal mb-4">
-              10. Contact
+              9. Contact
             </h2>
             <p className="text-warm-gray leading-relaxed">
               Questions about these terms?<br />
-              Email: hello@otsu.shop<br />
+              Email: nomura41985@gmail.com<br />
               We aim to respond within 2 business days.
             </p>
           </section>

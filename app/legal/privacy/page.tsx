@@ -70,7 +70,7 @@ export default function PrivacyPolicy() {
             </p>
             <ul className="list-disc pl-6 text-warm-gray space-y-2 mb-4">
               <li><strong>Stripe:</strong> For secure payment processing</li>
-              <li><strong>Shipping carriers:</strong> (Royal Mail, DHL, etc.) To deliver your order</li>
+              <li><strong>Shipping carriers:</strong> (Japan Post, DHL, etc.) To deliver your order</li>
               <li><strong>Legal authorities:</strong> When required by law</li>
             </ul>
             <p className="text-warm-gray leading-relaxed">
@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
               5. Your Rights (GDPR)
             </h2>
             <p className="text-warm-gray leading-relaxed mb-4">
-              Under UK and EU data protection laws, you have the right to:
+              Under applicable data protection regulations including GDPR, you have the right to:
             </p>
             <ul className="list-disc pl-6 text-warm-gray space-y-2 mb-4">
               <li>Access your personal data</li>
@@ -93,7 +93,7 @@ export default function PrivacyPolicy() {
               <li>Data portability</li>
             </ul>
             <p className="text-warm-gray leading-relaxed">
-              To exercise these rights, contact us at privacy@otsu.shop
+              To exercise these rights, contact us at nomura41985@gmail.com
             </p>
           </section>
 
@@ -113,7 +113,7 @@ export default function PrivacyPolicy() {
               7. Data Retention
             </h2>
             <p className="text-warm-gray leading-relaxed">
-              We retain your order information for 7 years to comply with UK tax and accounting laws. 
+              We retain your order information for 7 years to comply with applicable tax and accounting obligations. 
               After this period, your data is securely deleted.
             </p>
           </section>
@@ -124,9 +124,9 @@ export default function PrivacyPolicy() {
             </h2>
             <p className="text-warm-gray leading-relaxed">
               For privacy-related inquiries:<br />
-              Email: privacy@otsu.shop<br />
-              Address: [Your London Address]<br />
-              Company: 乙 otsu Ltd.
+              Email: nomura41985@gmail.com<br />
+              Address: 545-20 Masuda, Higashi-ku, Okayama-shi, Okayama-ken, Japan<br />
+              乙 otsu
             </p>
           </section>
         </div>
