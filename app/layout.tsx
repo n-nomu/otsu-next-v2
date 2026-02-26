@@ -17,8 +17,35 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "乙 otsu | Bizen Ware from Okayama",
-  description: "Handcrafted Bizen-yaki ceramics from Okayama, Japan. Earth, fire, and serendipity.",
+  title: "乙 otsu | Bizen Ware from Okayama to London",
+  description: "Handcrafted Bizen-yaki ceramics from Okayama, Japan. Each piece is unique, fired in wood-burning kilns for 14 days. Delivered worldwide.",
+  keywords: ["Bizen ware", "Bizen-yaki", "Japanese ceramics", "pottery", "Okayama", "London", "handcrafted", "artisan"],
+  openGraph: {
+    title: "乙 otsu | Bizen Ware from Okayama to London",
+    description: "Handcrafted Bizen-yaki ceramics from Okayama, Japan. Each piece is unique, fired in wood-burning kilns for 14 days.",
+    url: "https://otsu-next-v2.vercel.app",
+    siteName: "乙 otsu",
+    images: [
+      {
+        url: "https://otsu-next-v2.vercel.app/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "乙 otsu - Bizen Ware from Okayama to London",
+      },
+    ],
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "乙 otsu | Bizen Ware from Okayama to London",
+    description: "Handcrafted Bizen-yaki ceramics from Okayama, Japan. Each piece is unique.",
+    images: ["https://otsu-next-v2.vercel.app/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
