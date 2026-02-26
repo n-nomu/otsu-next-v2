@@ -1,13 +1,25 @@
+import Link from "next/link";
+
 export default function ReturnsPolicy() {
   return (
     <div className="min-h-screen bg-[#F5F3EF] py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
+          <Link 
+            href="/" 
+            className="text-[#1A1A1A]/60 hover:text-[#B8735A] transition-colors text-sm"
+          >
+            ← Back to Home
+          </Link>
+        </div>
+
         <h1 className="text-4xl font-serif text-[#1A1A1A] mb-8 text-center">
           Returns & Refunds Policy
         </h1>
         
         <div className="prose prose-lg max-w-none text-[#1A1A1A] space-y-8">
-          <p className="text-sm text-gray-500">Last Updated: February 2026</p>
+          <p className="text-sm text-gray-500">Last Updated: February 14, 2026</p>
 
           <section>
             <h2 className="text-2xl font-serif mb-4">1. Our Products</h2>
@@ -40,7 +52,7 @@ export default function ReturnsPolicy() {
               To ensure we can assist you:
             </p>
             <ul className="list-disc pl-6 mt-2 space-y-2">
-              <li>Please report any damage within 24 hours of delivery</li>
+              <li>Please report any damage within 48 hours of delivery</li>
               <li>Photograph the packaging and item to help us understand what occurred</li>
               <li>We cannot provide prepaid shipping labels for international returns. Please ship the item at your expense using a trackable service (EMS, DHL, or FedEx), and retain your receipt. <strong>We will reimburse your return shipping cost upon safe receipt of the item at our studio.</strong></li>
             </ul>
@@ -80,5 +92,5 @@ export default function ReturnsPolicy() {
         </div>
       </div>
     </div>
-  )
+  );
 }

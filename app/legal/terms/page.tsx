@@ -80,7 +80,8 @@ export default function TermsOfService() {
               4. Shipping & Delivery
             </h2>
             <p className="text-warm-gray leading-relaxed mb-4">
-              <strong>Processing Time:</strong> Orders are processed within 1-2 business days.<br />
+              <strong>Processing:</strong> Orders are processed as quickly as possible. 
+              Tracking information will be provided via email once your order is dispatched.<br />
               <strong>Delivery:</strong> We ship from Okayama, Japan via Japan Post or DHL.<br />
               <strong>Worldwide:</strong> 7-14 business days (varies by destination and customs clearance)<br />
               <em>Exact delivery estimates will be provided via email after order confirmation.</em>
