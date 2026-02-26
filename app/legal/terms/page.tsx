@@ -69,8 +69,9 @@ export default function TermsOfService() {
               immediately upon order confirmation.
             </p>
             <p className="text-warm-gray leading-relaxed">
-              <strong>Pricing:</strong> All prices are in British Pounds (£) and include UK VAT where applicable. 
-              International orders may be subject to import duties and taxes.
+              <strong>Pricing:</strong> All prices include all applicable taxes and import duties. 
+              Shipping costs are calculated separately at checkout. 
+              No additional charges will be due upon delivery.
             </p>
           </section>
 
