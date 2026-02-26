@@ -4,13 +4,11 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { products } from '@/lib/products';
-import { useCurrency } from '@/lib/currency-context';
 
 function ProductCard({ product, index }: { product: typeof products[0]; index: number }) {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const { formatPrice } = useCurrency();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -84,7 +82,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
             </p>
           ) : (
             <p className="font-sans text-lg font-medium text-terracotta">
-              {formatPrice(product.price)}
+              £{product.price}
             </p>
           )}
         </div>
@@ -95,7 +93,7 @@ function ProductCard({ product, index }: { product: typeof products[0]; index: n
 
 export function Shop() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState<"all" | "sake" | "tea" | "plates">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "heritage" | "studio">("all");
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -159,34 +157,24 @@ export function Shop() {
             All
           </button>
           <button
-            onClick={() => setActiveTab("sake")}
+            onClick={() => setActiveTab("heritage")}
             className={`px-6 py-3 text-sm tracking-wider transition-all duration-300 ${
-              activeTab === "sake"
+              activeTab === "heritage"
                 ? "bg-[#1A1A1A] text-[#F5F3EF]"
                 : "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal"
             }`}
           >
-            Sake Collection
+            Heritage Collection
           </button>
           <button
-            onClick={() => setActiveTab("tea")}
+            onClick={() => setActiveTab("studio")}
             className={`px-6 py-3 text-sm tracking-wider transition-all duration-300 ${
-              activeTab === "tea"
+              activeTab === "studio"
                 ? "bg-[#1A1A1A] text-[#F5F3EF]"
                 : "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal"
             }`}
           >
-            Tea Cups
-          </button>
-          <button
-            onClick={() => setActiveTab("plates")}
-            className={`px-6 py-3 text-sm tracking-wider transition-all duration-300 ${
-              activeTab === "plates"
-                ? "bg-[#1A1A1A] text-[#F5F3EF]"
-                : "bg-transparent text-charcoal border border-charcoal/20 hover:border-charcoal"
-            }`}
-          >
-            Plates
+            Studio Collection
           </button>
         </div>
 

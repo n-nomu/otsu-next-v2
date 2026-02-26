@@ -7,12 +7,12 @@ export interface Product {
   image2?: string;
   dimensions?: string;
   soldOut?: boolean;
-  collection: "heritage" | "studio";
-  weight: number; // ← 追加（グラム単位）
+  collection: "sake" | "tea" | "plates" | "other";
+  weight: number; // グラム単位
 }
 
 export const products: Product[] = [
-  // Heritage Collection - 高級ライン（7商品）
+  // Sake Collection - 酒器セット・ぐい呑み（5商品）
   {
     id: "1",
     name: "Bizen-yaki Sake Set: The Essence of Earth and Fire",
@@ -28,11 +28,11 @@ Natural Texture: The unglazed, iron-rich surface offers a tactile experience tha
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
     image: "/product_1_1.webp",
     image2: "/product_1_2.webp",
-    dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
-Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
+    dimensions: `Tokkuri (Flask): 100(W) × 30(φ) × 120(H) mm | Weight [ ] g
+Guinomi (Cup): 55(W) × 55(φ) × 35(H) mm | Weight [ ] g
 Capacity: Approx. [ ] ml`,
-    collection: "heritage",
-    weight: 800 // ← 追加
+    collection: "sake",
+    weight: 800
   },
   {
     id: "2",
@@ -48,11 +48,11 @@ Timeless Texture: The unglazed surface retains a refined yet earthy feel, design
 
 Direct Origin: Handmade in Bizen, Okayama, and shipped directly from the artisan's studio to preserve its story.`,
     image: "/product_2_1.webp",
-    dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
-Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
+    dimensions: `Tokkuri (Flask): 95(W) × 30(φ) × 140(H) mm | Weight [ ] g
+Guinomi (Cup): 55(W) × 55(φ) × 40(H) mm | Weight [ ] g
 Capacity: Approx. [ ] ml`,
-    collection: "heritage",
-    weight: 800 // ← 追加
+    collection: "sake",
+    weight: 800
   },
   {
     id: "7",
@@ -69,11 +69,11 @@ Balanced Form: A slender, elegant silhouette that showcases the natural texture 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the studio.`,
     image: "/product_7_1.webp",
     image2: "/product_7_2.webp",
-    dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
-Guinomi (Cup): Height [ ] × Width [ ] mm | Weight [ ] g
+    dimensions: `Tokkuri (Flask): 80(W) × 35(φ) × 115(H) mm | Weight [ ] g
+Guinomi (Cup): 60(W) × 60(φ) × 35(H) mm | Weight [ ] g
 Capacity: Approx. [ ] ml`,
-    collection: "heritage",
-    weight: 800 // ← 追加
+    collection: "sake",
+    weight: 800
   },
   {
     id: "8",
@@ -95,12 +95,56 @@ A Meaningful Gift
 This pairing of two distinct "landscapes" symbolizes the harmony between two individuals—ideal for commemorating a bond, a shared journey, or special celebrations.`,
     image: "/product_8_1.webp",
     image2: "/product_8_2.webp",
-    dimensions: `Tokkuri (Flask): Height [ ] × Width [ ] mm | Weight [ ] g
-Guinomi (Left): Height [ ] × Width [ ] mm | Weight [ ] g
-Guinomi (Right): Height [ ] × Width [ ] mm | Weight [ ] g
+    dimensions: `Tokkuri (Flask): 85(W) × 35(φ) × 115(H) mm | Weight [ ] g
+Guinomi (Left): 70(W) × 70(φ) × 50(H) mm | Weight [ ] g
+Guinomi (Right): 75(W) × 75(φ) × 45(H) mm | Weight [ ] g
 Capacity: Approx. [ ] ml (flask) / [ ] ml each (cups)`,
-    collection: "heritage",
-    weight: 800 // ← 追加
+    collection: "sake",
+    weight: 800
+  },
+  {
+    id: "13",
+    name: "Bizen-yaki Guinomi: Charcoal and Fire",
+    price: 85,
+    description: `Lines Drawn by Fire.
+
+This compact guinomi (sake cup) features distinctive geometric patterns created by the natural interaction of clay and flame. The exterior shows striking lines of scarlet against the warm clay body—a signature effect of Bizen firing where iron-rich clay meets intense heat.
+
+Geometric Beauty: Bold, linear patterns that add visual interest to the traditional form.
+
+Comfortable Hold: Sized perfectly for cradling in both hands, ideal for sake or tea.
+
+Living Surface: The unglazed texture will develop a subtle sheen and deepen in color with each use.
+
+Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
+    image: "/product_tea_bowl.jpg",
+    dimensions: `Diameter [ ] mm | Height [ ] mm | Capacity [ ] ml | Weight [ ] g`,
+    soldOut: false,
+    collection: "sake",
+    weight: 400
+  },
+  
+  // Tea Cups - 湯呑み・ティーカップ（4商品）
+  {
+    id: "5",
+    name: "Bizen-yaki Tea Cup: Crimson Fire and Iron Earth",
+    price: 100,
+    description: `A Study in Duality.
+
+This teacup captures the dramatic essence of the kiln's flame. One side features a vibrant, scorched crimson hue—known as Hiiro—while the other transitions into a deep, matte charcoal with hints of warm bronze tones. The subtle horizontal ridges from the potter's wheel add a rhythmic texture, creating a piece that feels grounded yet full of movement.
+
+Dynamic Gradient: The stark contrast between the warm earth tones and the dark, fired surface is a natural result of the placement within the kiln.
+
+Ergonomic Simplicity: A classic cylindrical form that fits naturally in the hands, allowing the user to feel the raw, unglazed texture of Bizen clay.
+
+Direct Origin: Hand-sculpted in Okayama and shipped directly from the artisan's studio.`,
+    image: "/product_5_1.webp",
+    image2: "/product_5_2.webp",
+    dimensions: `70(W) × 70(φ) × 80(H) mm | Weight [ ] g
+Capacity: Approx. [ ] ml`,
+    soldOut: false,
+    collection: "tea",
+    weight: 400
   },
   {
     id: "9",
@@ -120,12 +164,12 @@ A Meaningful Gift
 The pairing of two distinct "landscapes" symbolizes the harmony between two individuals—ideal for commemorating a bond, a shared journey, or special celebrations.`,
     image: "/product_9_2.webp",
     image2: "/product_9_1.webp",
-    dimensions: `Cup (Left): Height [ ] × Diameter [ ] mm | Weight [ ] g
-Cup (Right): Height [ ] × Diameter [ ] mm | Weight [ ] g
+    dimensions: `Left Cup: 65(W) × 85(φ) × 110(H) mm | Weight [ ] g
+Right Cup: 65(W) × 90(φ) × 115(H) mm | Weight [ ] g
 Capacity: Approx. [ ] ml each`,
     soldOut: false,
-    collection: "heritage",
-    weight: 400 // ← 追加
+    collection: "tea",
+    weight: 400
   },
   {
     id: "10",
@@ -147,12 +191,12 @@ Ideal for Gifting
 With their complementary yet distinct colorations, this set is a popular choice for meaningful gifts.`,
     image: "/product_10_1.webp",
     image2: "/product_10_2.webp",
-    dimensions: `Cup (Left): Height [ ] × Diameter [ ] mm | Weight [ ] g
-Cup (Right): Height [ ] × Diameter [ ] mm | Weight [ ] g
+    dimensions: `Left Cup: 70(W) × 70(φ) × 115(H) mm | Weight [ ] g
+Right Cup: 70(W) × 70(φ) × 115(H) mm | Weight [ ] g
 Capacity: Approx. [ ] ml each`,
     soldOut: false,
-    collection: "heritage",
-    weight: 400 // ← 追加
+    collection: "tea",
+    weight: 400
   },
   {
     id: "11",
@@ -169,69 +213,14 @@ Internal Detail: The interior reveals rhythmic, concentric ridges formed during 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
     image: "/product_11_1.webp",
     image2: "/product_11_2.webp",
-    dimensions: `Height: [Insert Height] mm
-Diameter: [Insert Diameter] mm
-Weight: [Insert Weight] g
-Capacity: Approx. [Insert Volume] ml`,
-    soldOut: false,
-    collection: "heritage",
-    weight: 400 // ← 追加
-  },
-  // Sold Out Archive (Heritage)
-  {
-    id: "3",
-    name: "Rice Bowl Set (2)",
-    price: 220,
-    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
-    image: "/product_rice_bowls.jpg",
-    soldOut: true,
-    collection: "heritage",
-    weight: 500 // ← 追加
-  },
-  {
-    id: "4",
-    name: "Sake Flask — Sangiri",
-    price: 195,
-    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
-    image: "/product_sake_flask.jpg",
-    soldOut: true,
-    collection: "heritage",
-    weight: 500 // ← 追加
-  },
-  {
-    id: "6",
-    name: "Small Jar — Kobizen",
-    price: 310,
-    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
-    image: "/product_jar.jpg",
-    soldOut: true,
-    collection: "heritage",
-    weight: 500 // ← 追加
-  },
-  // Studio Collection - 入門ライン（3商品）
-  {
-    id: "5",
-    name: "Bizen-yaki Tea Cup: Crimson Fire and Iron Earth",
-    price: 100,
-    description: `A Study in Duality.
-
-This teacup captures the dramatic essence of the kiln's flame. One side features a vibrant, scorched crimson hue—known as Hiiro—while the other transitions into a deep, matte charcoal with hints of warm bronze tones. The subtle horizontal ridges from the potter's wheel add a rhythmic texture, creating a piece that feels grounded yet full of movement.
-
-Dynamic Gradient: The stark contrast between the warm earth tones and the dark, fired surface is a natural result of the placement within the kiln.
-
-Ergonomic Simplicity: A classic cylindrical form that fits naturally in the hands, allowing the user to feel the raw, unglazed texture of Bizen clay.
-
-Direct Origin: Hand-sculpted in Okayama and shipped directly from the artisan's studio.`,
-    image: "/product_5_1.webp",
-    image2: "/product_5_2.webp",
-    dimensions: `Height [ ] mm
-Diameter [ ] mm
-Weight [ ] g
+    dimensions: `75(W) × 75(φ) × 120(H) mm | Weight [ ] g
 Capacity: Approx. [ ] ml`,
     soldOut: false,
-    collection: "studio",
-    weight: 400 // ← 追加
+    collection: "tea",
+    weight: 400
   },
+  
+  // Plates - 皿（1商品）
   {
     id: "12",
     name: "Bizen-yaki Plate: Natural Canvas",
@@ -248,29 +237,40 @@ Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the arti
     image: "/product_plate.jpg",
     dimensions: `Diameter [ ] mm | Height [ ] mm | Weight [ ] g`,
     soldOut: false,
-    collection: "studio",
-    weight: 400 // ← 追加
+    collection: "plates",
+    weight: 400
+  },
+  
+  // Sold Out Archive（3商品）
+  {
+    id: "3",
+    name: "Rice Bowl Set (2)",
+    price: 220,
+    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
+    image: "/product_rice_bowls.jpg",
+    soldOut: true,
+    collection: "other",
+    weight: 500
   },
   {
-    id: "13",
-    name: "Bizen-yaki Tea Bowl: Warm Geometry",
-    price: 85,
-    description: `Lines Drawn by Fire.
-
-This compact tea bowl features distinctive geometric patterns created by the natural interaction of clay and flame. The exterior shows striking lines of scarlet against the warm clay body—a signature effect of Bizen firing where iron-rich clay meets intense heat.
-
-Geometric Beauty: Bold, linear patterns that add visual interest to the traditional form.
-
-Comfortable Hold: Sized perfectly for cradling in both hands, ideal for morning tea or meditation practice.
-
-Living Surface: The unglazed texture will develop a subtle sheen and deepen in color with each use.
-
-Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
-    image: "/product_tea_bowl.jpg",
-    dimensions: `Diameter [ ] mm | Height [ ] mm | Capacity [ ] ml | Weight [ ] g`,
-    soldOut: false,
-    collection: "studio",
-    weight: 400 // ← 追加
+    id: "4",
+    name: "Sake Flask — Sangiri",
+    price: 195,
+    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
+    image: "/product_sake_flask.jpg",
+    soldOut: true,
+    collection: "other",
+    weight: 500
+  },
+  {
+    id: "6",
+    name: "Small Jar — Kobizen",
+    price: 310,
+    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
+    image: "/product_jar.jpg",
+    soldOut: true,
+    collection: "other",
+    weight: 500
   }
 ];
 
