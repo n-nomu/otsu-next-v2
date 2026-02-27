@@ -12,7 +12,7 @@ export interface Product {
 }
 
 export const products: Product[] = [
-  // Sake Collection - 酒器セット・ぐい呑み（5商品）
+  // Sake Collection - 酒器セット・ぐい呑み（6商品：ID 1, 2, 7, 8, 4, 13）
   {
     id: "1",
     name: "Bizen-yaki Sake Set: The Essence of Earth and Fire",
@@ -53,6 +53,17 @@ Guinomi (Cup): 55(W) × 55(φ) × 40(H) mm | Weight 60 g | Capacity 55 ml
 Total Set Weight: 360 g`,
     collection: "sake",
     weight: 360
+  },
+  {
+    id: "4",
+    name: "Sake Flask — Sangiri",
+    price: 195,
+    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
+    image: "/product_sake_flask.jpg",
+    dimensions: `85(W) × 35(φ) × 130(H) mm | Weight 280 g | Capacity 450 ml`,
+    soldOut: true,
+    collection: "sake",
+    weight: 280
   },
   {
     id: "7",
@@ -118,10 +129,10 @@ Living Surface: The unglazed texture will develop a subtle sheen and deepen in c
 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
     image: "/product_tea_bowl.jpg",
-    dimensions: `Dimensions will be measured and added shortly.`,
-    soldOut: false,
+    dimensions: `65(W) × 65(φ) × 50(H) mm | Weight 80 g | Capacity 60 ml`,
+    soldOut: true,
     collection: "sake",
-    weight: 400
+    weight: 80
   },
   
   // Tea Cups - 湯呑み・ティーカップ（4商品）
@@ -218,7 +229,7 @@ Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the arti
     weight: 220
   },
   
-  // Plates - 皿（1商品）
+  // Plates - 皿（1商品：Sold Out）
   {
     id: "12",
     name: "Bizen-yaki Plate: Natural Canvas",
@@ -233,39 +244,19 @@ Warm Palette: Natural russet and sand tones that complement both contemporary an
 
 Direct Origin: Handcrafted in Bizen, Okayama, and shipped directly from the artisan's studio.`,
     image: "/product_plate.jpg",
-    dimensions: `Dimensions will be measured and added shortly.`,
-    soldOut: false,
+    dimensions: `180(W) × 180(D) × 25(H) mm | Weight 400 g`,
+    soldOut: true,
     collection: "plates",
     weight: 400
   },
   
-  // Sold Out Archive（3商品）
+  // Sold Out Archive（1商品：ID 3のみ）
   {
     id: "3",
     name: "Rice Bowl Set (2)",
     price: 220,
     description: "Currently unavailable. Join our newsletter to be notified of restocks.",
     image: "/product_rice_bowls.jpg",
-    soldOut: true,
-    collection: "other",
-    weight: 500
-  },
-  {
-    id: "4",
-    name: "Sake Flask — Sangiri",
-    price: 195,
-    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
-    image: "/product_sake_flask.jpg",
-    soldOut: true,
-    collection: "other",
-    weight: 500
-  },
-  {
-    id: "6",
-    name: "Small Jar — Kobizen",
-    price: 310,
-    description: "Currently unavailable. Join our newsletter to be notified of restocks.",
-    image: "/product_jar.jpg",
     soldOut: true,
     collection: "other",
     weight: 500
