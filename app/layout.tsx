@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "乙 otsu | Bizen Ware from Okayama to London",
     description: "Handcrafted Bizen-yaki ceramics from Okayama, Japan. Each piece is unique, fired in wood-burning kilns for 14 days.",
-    url: "https://otsu-next-v2.vercel.app",
+    url: "https://otsu-japan.com",
     siteName: "乙 otsu",
     images: [
       {
-        url: "https://otsu-next-v2.vercel.app/og-image.jpg",
+        url: "https://otsu-japan.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "乙 otsu - Bizen Ware from Okayama to London",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "乙 otsu | Bizen Ware from Okayama to London",
     description: "Handcrafted Bizen-yaki ceramics from Okayama, Japan. Each piece is unique.",
-    images: ["https://otsu-next-v2.vercel.app/og-image.jpg"],
+    images: ["https://otsu-japan.com/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -58,7 +58,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script 
-          src="https://www.googletagmanager.com/gtag/js?id=G-B7T18E1YDX"
+          src="https://www.googletagmanager.com/gtag/js?id=G-BDZHQBBZRW"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -66,7 +66,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-B7T18E1YDX');
+            gtag('config', 'G-BDZHQBBZRW');
           `}
         </Script>
       </head>
