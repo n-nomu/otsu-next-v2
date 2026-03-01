@@ -91,7 +91,7 @@ export function Hero() {
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
             }`}
           >
-            Handcrafted Excellence from Bizen, Okayama
+            Handcrafted Excellence from Bizen, Okayama, Japan
           </p>
 
           {/* Tertiary Text (italic) */}
