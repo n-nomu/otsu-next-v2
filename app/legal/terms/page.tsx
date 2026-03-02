@@ -32,7 +32,7 @@ export default function TermsOfService() {
             <p className="text-warm-gray leading-relaxed">
               <strong>Company:</strong> 乙 otsu<br />
               <strong>Address:</strong> 545-20 Masuda, Higashi-ku, Okayama-shi, Okayama-ken, Japan<br />
-              <strong>Email:</strong> nomura41985@gmail.com
+              <strong>Email:</strong> info@otsu-japan.com
             </p>
           </section>
 
@@ -147,7 +147,7 @@ export default function TermsOfService() {
             </h2>
             <p className="text-warm-gray leading-relaxed">
               Questions about these terms?<br />
-              Email: nomura41985@gmail.com<br />
+              Email: info@otsu-japan.com<br />
               We aim to respond within 2 business days.
             </p>
           </section>

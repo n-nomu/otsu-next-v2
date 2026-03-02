@@ -86,7 +86,7 @@ export default function ReturnsPolicy() {
             <p className="font-medium">Questions?</p>
             <p className="mt-2">
               We are always happy to discuss any concerns before or after your purchase.<br />
-              Contact: <a href="mailto:nomura41985@gmail.com" className="text-[#B8735A] hover:underline">nomura41985@gmail.com</a>
+              Contact: <a href="mailto:nomura41985@gmail.com" className="text-[#B8735A] hover:underline">info@otsu-japan.com</a>
             </p>
           </section>
         </div>

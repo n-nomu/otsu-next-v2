@@ -124,7 +124,7 @@ export default function PrivacyPolicy() {
             </h2>
             <p className="text-warm-gray leading-relaxed">
               For privacy-related inquiries:<br />
-              Email: nomura41985@gmail.com<br />
+              Email: info@otsu-japan.com<br />
               Address: 545-20 Masuda, Higashi-ku, Okayama-shi, Okayama-ken, Japan<br />
               乙 otsu
             </p>
