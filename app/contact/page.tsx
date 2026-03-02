@@ -14,6 +14,7 @@ export default function ContactPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,19 +25,39 @@ export default function ContactPage() {
     }
     
     setIsSubmitting(true);
+    setError('');
     
-    // コンソールログ出力（Resend実装までの仮）
-    console.log("Form submitted:", formData);
-    console.log("To: nomura41985@gmail.com");
-    
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: 'Contact Form Submission',
+          message: formData.message,
+          privacyAgreed: formData.privacyAgreed
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '', privacyAgreed: false });
+      } else {
+        const data = await response.json();
+        setError(data.error || 'Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      console.error('Submit error:', err);
+      setError('Network error. Please check your connection and try again.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', message: '', privacyAgreed: false });
-    }, 1000);
+    }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     setFormData({
       ...formData,
@@ -79,8 +100,8 @@ export default function ContactPage() {
                 <Mail className="w-5 h-5 text-[#B8735A] mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-sans text-[#1A1A1A] mb-1">Email</h3>
-                  <a href="mailto:nomura41985@gmail.com" className="text-[#B8735A] hover:underline text-sm">
-                    nomura41985@gmail.com
+                  <a href="mailto:info@otsu-japan.com" className="text-[#B8735A] hover:underline text-sm">
+                    info@otsu-japan.com
                   </a>
                   <p className="text-[#1A1A1A]/50 text-xs mt-1">We aim to respond within 48 hours</p>
                 </div>
@@ -136,6 +157,12 @@ export default function ContactPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {error && (
+                  <div className="p-4 bg-red-50 border border-red-200 text-red-800 text-sm">
+                    {error}
+                  </div>
+                )}
+                
                 <div>
                   <label htmlFor="name" className="block text-sm font-sans text-[#1A1A1A] mb-2">
                     Name <span className="text-[#B8735A]">*</span>
@@ -147,7 +174,8 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white border border-[#1A1A1A]/20 focus:border-[#1A1A1A] focus:outline-none transition-colors font-sans text-[#1A1A1A]"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-white border border-[#1A1A1A]/20 focus:border-[#1A1A1A] focus:outline-none transition-colors font-sans text-[#1A1A1A] disabled:opacity-50"
                   />
                 </div>
 
@@ -162,7 +190,8 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white border border-[#1A1A1A]/20 focus:border-[#1A1A1A] focus:outline-none transition-colors font-sans text-[#1A1A1A]"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-white border border-[#1A1A1A]/20 focus:border-[#1A1A1A] focus:outline-none transition-colors font-sans text-[#1A1A1A] disabled:opacity-50"
                   />
                 </div>
 
@@ -177,7 +206,8 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-white border border-[#1A1A1A]/20 focus:border-[#1A1A1A] focus:outline-none transition-colors font-sans text-[#1A1A1A] resize-none"
+                    disabled={isSubmitting}
+                    className="w-full px-4 py-3 bg-white border border-[#1A1A1A]/20 focus:border-[#1A1A1A] focus:outline-none transition-colors font-sans text-[#1A1A1A] resize-none disabled:opacity-50"
                   />
                 </div>
 
@@ -189,7 +219,8 @@ export default function ContactPage() {
                     name="privacyAgreed"
                     checked={formData.privacyAgreed}
                     onChange={handleChange}
-                    className="mt-1 w-4 h-4 border border-[#1A1A1A]/30 rounded cursor-pointer"
+                    disabled={isSubmitting}
+                    className="mt-1 w-4 h-4 border border-[#1A1A1A]/30 rounded cursor-pointer disabled:opacity-50"
                   />
                   <label htmlFor="privacy" className="text-xs text-[#1A1A1A]/70 leading-relaxed cursor-pointer">
                     I agree to the <Link href="/legal/privacy" className="text-[#B8735A] hover:underline">Privacy Policy</Link> and consent to having my data processed in accordance with GDPR. 
